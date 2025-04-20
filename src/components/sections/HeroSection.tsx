@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface HeroContent {
   title: string;
@@ -12,7 +12,7 @@ export default function HeroSection() {
     title: "Rakesh Joshi",
     subtitle: "Optical Research Engineer & Photonics Specialist",
     description: "Experienced researcher specializing in 3D imaging, computational imaging, optical microscopy, and optical metrology with a focus on advanced optical system design.",
-    image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=500"
+    image: "/websiteRJ/profile.jpg",
   };
 
   return (
@@ -27,15 +27,15 @@ export default function HeroSection() {
               <a href="#contact" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors">
                 Contact Me
               </a>
-              <a href="#research" className="border border-white hover:bg-white hover:text-blue-900 text-white px-6 py-2 rounded-lg transition-colors">
+              <Link to="/research" className="border border-white hover:bg-white hover:text-blue-900 text-white px-6 py-2 rounded-lg transition-colors">
                 View Research
-              </a>
+              </Link>
             </div>
           </div>
           <div className="md:w-1/2 flex justify-center">
             <img
               src={content.image}
-              alt="Optical Research"
+              alt="Rakesh Joshi - Optical Research Engineer"
               className="rounded-lg shadow-xl"
             />
           </div>

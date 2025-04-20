@@ -23,7 +23,9 @@ export default function ResearchPage() {
         <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-4 flex items-center">
             <Microscope className="mr-2 text-blue-600" size={24} />
-            Optics (Physics)
+            
+              Optics
+            
           </h2>
 
           {/* Project cards */}
@@ -36,7 +38,11 @@ export default function ResearchPage() {
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">3D Imaging Systems</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  <Link to="/research/3d-imaging-systems" className="hover:text-blue-600 transition-colors">
+                    3D Imaging Systems
+                  </Link>
+                </h3>
                 <p className="text-gray-600 mb-4">
                   Advanced integral imaging techniques for capturing and visualizing dynamic underwater phenomena at high speeds.
                 </p>
@@ -48,13 +54,22 @@ export default function ResearchPage() {
                     <Microscope className="w-5 h-5 mr-2" />
                     <span>{expandedProject === 0 ? "Hide Details" : "View Project Details"}</span>
                   </button>
-                  <Link 
-                    to="/research/underwater-imaging"
-                    className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-                  >
-                    <span>View Full Research</span>
-                    <span className="text-sm ml-1">→</span>
-                  </Link>
+                  <div className="flex gap-2">
+                    <Link 
+                      to="/research/underwater-imaging"
+                      className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      <span>Underwater Imaging</span>
+                      <span className="text-sm ml-1">→</span>
+                    </Link>
+                    <Link 
+                      to="/research/dynamic-polarimetric-imaging"
+                      className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      <span>Dynamic Polarimetric</span>
+                      <span className="text-sm ml-1">→</span>
+                    </Link>
+                  </div>
                 </div>
                 
                 {expandedProject === 0 && (
@@ -85,11 +100,15 @@ export default function ResearchPage() {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=500"
-                alt="Optical Microscopy"
+                alt="Computational Imaging"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Computational Imaging</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  <Link to="/research/computational-imaging" className="hover:text-blue-600 transition-colors">
+                    Computational Imaging
+                  </Link>
+                </h3>
                 <p className="text-gray-600 mb-4">
                   Implemented innovative computational imaging techniques for enhanced image reconstruction and analysis.
                 </p>
@@ -121,11 +140,15 @@ export default function ResearchPage() {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=500"
-                alt="Photonic Devices"
+                alt="Optical Microscopy"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Optical Microscopy</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  <Link to="/research/optical-microscopy" className="hover:text-blue-600 transition-colors">
+                    Optical Microscopy
+                  </Link>
+                </h3>
                 <p className="text-gray-600 mb-4">
                   Designed and optimized optical microscopy systems for high-resolution imaging and characterization.
                 </p>
