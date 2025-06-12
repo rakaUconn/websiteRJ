@@ -1,184 +1,236 @@
 import { useState } from 'react';
-import { Microscope } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Microscope, ExternalLink, Calendar, Users, Tag } from 'lucide-react';
+import { contentService } from '../services/contentService';
 
 export default function ResearchPage() {
-  const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [expandedProject, setExpandedProject] = useState<string | null>(null);
 
-  
-  const toggleProject = (index: number) => {
-    if (expandedProject === index) {
-      setExpandedProject(null);
-    } else {
-      setExpandedProject(index);
+  const categories = contentService.getCategories();
+  const allProjects = contentService.getProjects();
+  const stats = contentService.getStats();
+
+  const filteredProjects = activeCategory 
+    ? contentService.getProjectsByCategory(activeCategory)
+    : allProjects;
+
+  const toggleProject = (projectId: string) => {
+    setExpandedProject(expandedProject === projectId ? null : projectId);
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'completed': return 'bg-green-100 text-green-800';
+      case 'ongoing': return 'bg-blue-100 text-blue-800';
+      case 'planned': return 'bg-yellow-100 text-yellow-800';
+      default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-6">
-        <h1 className="text-4xl font-bold mb-12 text-center">Research</h1>
-        
-        {/* 3D Imaging Systems */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4 flex items-center">
-            <Microscope className="mr-2 text-blue-600" size={24} />
-            
-              Optics
-            
-          </h2>
-
-          {/* Project cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Project 1 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=500"
-                alt="Quantum Optics Research"
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  <Link to="/research/3d-imaging-systems" className="hover:text-blue-600 transition-colors">
-                    3D Imaging Systems
-                  </Link>
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Advanced integral imaging techniques for capturing and visualizing dynamic underwater phenomena at high speeds.
-                </p>
-                <div className="flex items-center gap-4">
-                  <button 
-                    onClick={() => toggleProject(0)}
-                    className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-                  >
-                    <Microscope className="w-5 h-5 mr-2" />
-                    <span>{expandedProject === 0 ? "Hide Details" : "View Project Details"}</span>
-                  </button>
-                  <div className="flex gap-2">
-                    <Link 
-                      to="/research/underwater-imaging"
-                      className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-                    >
-                      <span>Underwater Imaging</span>
-                      <span className="text-sm ml-1">→</span>
-                    </Link>
-                    <Link 
-                      to="/research/dynamic-polarimetric-imaging"
-                      className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-                    >
-                      <span>Dynamic Polarimetric</span>
-                      <span className="text-sm ml-1">→</span>
-                    </Link>
-                  </div>
-                </div>
-                
-                {expandedProject === 0 && (
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <p className="text-gray-700 mb-4">
-                      This research explores advanced integral imaging techniques for capturing and visualizing dynamic underwater phenomena at high speeds. 
-                      The system combines specialized optical arrays with computational reconstruction algorithms to achieve real-time 3D visualization 
-                      of rapidly changing underwater scenes, overcoming traditional limitations of underwater imaging such as scattering and absorption.
-                    </p>
-                    <p className="text-gray-700 mb-4">
-                      Key innovations include:
-                    </p>
-                    <ul className="list-disc pl-5 mb-4 text-gray-700">
-                      <li>Custom-designed microlens arrays optimized for underwater light propagation</li>
-                      <li>High-speed synchronized image acquisition system (&gt;500 fps)</li>
-                      <li>Novel computational reconstruction algorithms that compensate for water-induced distortions</li>
-                      <li>Real-time 3D visualization capabilities for dynamic monitoring applications</li>
-                    </ul>
-                    <p className="text-gray-700">
-                      This technology has significant applications in marine biology research, underwater robotics, and environmental monitoring systems.
-                    </p>
-                  </div>
-                )}
-              </div>
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-4">Research Portfolio</h1>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+            Cutting-edge research in optical engineering, computational imaging, and advanced photonics systems
+          </p>
+          
+          {/* Research Statistics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="text-2xl font-bold text-blue-600">{stats.totalProjects}</div>
+              <div className="text-sm text-gray-600">Total Projects</div>
             </div>
-
-            {/* Project 2 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=500"
-                alt="Computational Imaging"
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  <Link to="/research/computational-imaging" className="hover:text-blue-600 transition-colors">
-                    Computational Imaging
-                  </Link>
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Implemented innovative computational imaging techniques for enhanced image reconstruction and analysis.
-                </p>
-                <button 
-                  onClick={() => toggleProject(1)}
-                  className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-                >
-                  <Microscope className="w-5 h-5 mr-2" />
-                  <span>{expandedProject === 1 ? "Hide Details" : "View Project Details"}</span>
-                </button>
-                
-                {expandedProject === 1 && (
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <h4 className="font-medium mb-2">Advanced Computational Imaging Techniques</h4>
-                    <p className="text-gray-700 mb-4">
-                      Research focused on developing computational algorithms for image enhancement in challenging environments.
-                    </p>
-                    <ul className="list-disc pl-5 mb-4 text-gray-700">
-                      <li>Deep learning models for image reconstruction from degraded input</li>
-                      <li>Multi-dimensional data processing pipelines for complex scene analysis</li>
-                      <li>Real-time image processing techniques for embedded systems</li>
-                    </ul>
-                  </div>
-                )}
-              </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="text-2xl font-bold text-green-600">{stats.completedProjects}</div>
+              <div className="text-sm text-gray-600">Completed</div>
             </div>
-
-            {/* Project 3 */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=500"
-                alt="Optical Microscopy"
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  <Link to="/research/optical-microscopy" className="hover:text-blue-600 transition-colors">
-                    Optical Microscopy
-                  </Link>
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Designed and optimized optical microscopy systems for high-resolution imaging and characterization.
-                </p>
-                <button 
-                  onClick={() => toggleProject(2)}
-                  className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-                >
-                  <Microscope className="w-5 h-5 mr-2" />
-                  <span>{expandedProject === 2 ? "Hide Details" : "View Project Details"}</span>
-                </button>
-                
-                {expandedProject === 2 && (
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <h4 className="font-medium mb-2">High-Resolution Optical Microscopy Systems</h4>
-                    <p className="text-gray-700 mb-4">
-                      Development of specialized optical microscopy techniques for biological and material science applications.
-                    </p>
-                    <ul className="list-disc pl-5 mb-4 text-gray-700">
-                      <li>Phase contrast and polarization microscopy for transparent specimens</li>
-                      <li>Fluorescence imaging with specialized filter sets</li>
-                      <li>Integration of computational techniques for super-resolution imaging</li>
-                    </ul>
-                  </div>
-                )}
-              </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="text-2xl font-bold text-blue-600">{stats.ongoingProjects}</div>
+              <div className="text-sm text-gray-600">Ongoing</div>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="text-2xl font-bold text-purple-600">{stats.totalPublications}</div>
+              <div className="text-sm text-gray-600">Publications</div>
             </div>
           </div>
         </div>
-      </div>
 
+        {/* Category Filter */}
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold mb-4">Research Areas</h2>
+          <div className="flex flex-wrap gap-3">
+            <button
+              onClick={() => setActiveCategory(null)}
+              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                !activeCategory 
+                  ? 'bg-blue-600 text-white' 
+                  : 'bg-white text-gray-700 hover:bg-gray-50 border'
+              }`}
+            >
+              All Projects
+            </button>
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
+                  activeCategory === category.id 
+                    ? 'bg-blue-600 text-white' 
+                    : 'bg-white text-gray-700 hover:bg-gray-50 border'
+                }`}
+              >
+                <Microscope size={16} />
+                {category.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project) => (
+            <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              {/* Project Image */}
+              {project.images && project.images.length > 0 && (
+                <img 
+                  src={project.images.find(img => img.type === 'hero')?.url || project.images[0].url}
+                  alt={project.title}
+                  className="w-full h-48 object-cover"
+                />
+              )}
+              
+              <div className="p-6">
+                {/* Project Header */}
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-xl font-semibold text-gray-900 leading-tight">
+                    {project.title}
+                  </h3>
+                  <span className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(project.status)}`}>
+                    {project.status}
+                  </span>
+                </div>
+
+                {/* Project Description */}
+                <p className="text-gray-600 mb-4 line-clamp-3">
+                  {project.description}
+                </p>
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-1 mb-4">
+                  {project.technologies.slice(0, 3).map((tech, index) => (
+                    <span key={index} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 3 && (
+                    <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                      +{project.technologies.length - 3} more
+                    </span>
+                  )}
+                </div>
+
+                {/* Project Meta */}
+                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                  <div className="flex items-center gap-1">
+                    <Calendar size={14} />
+                    {project.startDate}
+                    {project.endDate && ` - ${project.endDate}`}
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="flex items-center gap-3">
+                  <button 
+                    onClick={() => toggleProject(project.id)}
+                    className="flex items-center text-blue-600 hover:text-blue-800 transition-colors text-sm font-medium"
+                  >
+                    <Microscope className="w-4 h-4 mr-1" />
+                    {expandedProject === project.id ? "Hide Details" : "View Details"}
+                  </button>
+                  
+                  {project.slug && (
+                    <Link 
+                      to={`/research/${project.slug}`}
+                      className="flex items-center text-blue-600 hover:text-blue-800 transition-colors text-sm font-medium"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-1" />
+                      Full Details
+                    </Link>
+                  )}
+                </div>
+
+                {/* Expanded Details */}
+                {expandedProject === project.id && (
+                  <div className="mt-4 pt-4 border-t border-gray-200">
+                    {project.detailedDescription && (
+                      <p className="text-gray-700 mb-4">
+                        {project.detailedDescription}
+                      </p>
+                    )}
+
+                    {project.objectives && project.objectives.length > 0 && (
+                      <div className="mb-4">
+                        <h4 className="font-medium mb-2">Key Objectives:</h4>
+                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-1">
+                          {project.objectives.map((objective, index) => (
+                            <li key={index}>{objective}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {project.applications && project.applications.length > 0 && (
+                      <div className="mb-4">
+                        <h4 className="font-medium mb-2">Applications:</h4>
+                        <div className="flex flex-wrap gap-1">
+                          {project.applications.map((app, index) => (
+                            <span key={index} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
+                              {app}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {project.relatedProjects && project.relatedProjects.length > 0 && (
+                      <div>
+                        <h4 className="font-medium mb-2">Related Projects:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.relatedProjects.map((relatedId) => {
+                            const relatedProject = contentService.getProjectById(relatedId);
+                            return relatedProject ? (
+                              <Link 
+                                key={relatedId}
+                                to={`/research/${relatedProject.slug}`}
+                                className="text-blue-600 hover:text-blue-800 text-sm underline"
+                              >
+                                {relatedProject.title}
+                              </Link>
+                            ) : null;
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* No Projects Message */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-12">
+            <Microscope className="mx-auto text-gray-400 mb-4" size={48} />
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No projects found</h3>
+            <p className="text-gray-600">Try selecting a different category or view all projects.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
