@@ -1,63 +1,53 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import App from './App';
-import ResearchPage from './pages/ResearchPage';
+import ResearchIndexPage from './pages/ResearchIndexPage';
+import ProjectPostPage from './pages/ProjectPostPage';
+import AboutPage from './pages/AboutPage';
 import PublicationsPage from './pages/PublicationsPage';
-import UnderwaterImagingResearch from './pages/UnderwaterImagingResearch';
-import DynamicPolarimetricImagingResearch from './pages/DynamicPolarimetricImagingResearch';
-import ThreeDImagingSystemsPage from './pages/ThreeDImagingSystemsPage';
-import ComputationalImagingPage from './pages/ComputationalImagingPage';
-import OpticalMicroscopyPage from './pages/OpticalMicroscopyPage';
+import NewsPage from './pages/NewsPage';
+import ContactPage from './pages/ContactPage';
 import AdminPage from './pages/AdminPage';
 import RootLayout from './components/layout/RootLayout';
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <RootLayout />,
-      children: [
-        {
-          index: true,
-          element: <App />,
-        },
-        {
-          path: 'research',
-          element: <ResearchPage />,
-        },
-        {
-          path: 'publications',
-          element: <PublicationsPage />,
-        },
-        {
-          path: 'research/3d-imaging-systems',
-          element: <ThreeDImagingSystemsPage />,
-        },
-        {
-          path: 'research/underwater-imaging',
-          element: <UnderwaterImagingResearch />,
-        },
-        {
-          path: 'research/dynamic-polarimetric-imaging',
-          element: <DynamicPolarimetricImagingResearch />,
-        },
-        {
-          path: 'research/computational-imaging',
-          element: <ComputationalImagingPage />,
-        },
-        {
-          path: 'research/optical-microscopy',
-          element: <OpticalMicroscopyPage />,
-        },
-        {
-          path: 'admin',
-          element: <AdminPage />,
-        },
-      ],
-    },
-  ],
+const router = createHashRouter([
   {
-    basename: '/websiteRJ',
-  }
-);
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <App />,
+      },
+      {
+        path: 'research',
+        element: <ResearchIndexPage />,
+      },
+      {
+        path: 'research/:slug',
+        element: <ProjectPostPage />,
+      },
+      {
+        path: 'about',
+        element: <AboutPage />,
+      },
+      {
+        path: 'publications',
+        element: <PublicationsPage />,
+      },
+      {
+        path: 'news',
+        element: <NewsPage />,
+      },
+      {
+        path: 'contact',
+        element: <ContactPage />,
+      },
+      {
+        path: 'admin',
+        element: <AdminPage />,
+      },
+    ],
+  },
+]);
 
 export default router;

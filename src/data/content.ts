@@ -1,352 +1,375 @@
-import { ContentDatabase } from '../types/content';
+import { SiteData } from '../types/content';
 
-// Centralized content database - easily editable for future updates
-export const contentDatabase: ContentDatabase = {
+export const siteData: SiteData = {
   personalInfo: {
-    name: "Rakesh Joshi",
-    title: "Optical Research Engineer & Photonics Specialist",
-    subtitle: "PhD in Electrical and Computer Engineering",
-    description: "Experienced researcher specializing in 3D imaging, computational imaging, optical microscopy, and optical metrology with a focus on advanced optical system design.",
-    profileImage: "/websiteRJ/profile.jpg",
-    email: "rakesh.joshi@example.com",
-    location: "Connecticut, USA",
-    linkedin: "https://linkedin.com/in/rakesh-joshi",
-    github: "https://github.com/rakaUconn",
-    orcid: "https://orcid.org/0000-0000-0000-0000",
-    googleScholar: "https://scholar.google.com/citations?user=example",
+    name: 'Rakesh Joshi',
+    title: 'OPTICAL RESEARCH ENGINEER',
+    tagline: 'Optical systems that see <em>the eye more clearly.</em>',
+    eyebrow: 'ADAPTIVE OPTICS · OCULAR IMAGING · WAVEFRONT SENSING',
+    description:
+      'I design and build imaging and correction systems for the eye — adaptive optics, ocular surface phase imaging, anterior segment OCT, and eye tracking — bridging optical engineering and vision science.',
+    email: 'rakesh.joshi@uconn.edu',
+    location: 'Storrs, CT',
+    linkedin: 'linkedin.com/in/rakesh-joshi',
+    github: 'github.com/rakaUconn',
+    orcid: 'orcid.org/0000-0000-0000-0000',
+    googleScholar: 'scholar.google.com/citations?user=example',
+    stats: [
+      { value: 'PhD', label: 'ECE, UConn' },
+      { value: '5', label: 'active projects' },
+      { value: 'Storrs', label: 'CT' },
+    ],
   },
+
+  projects: [
+    {
+      id: 'adaptive-optics',
+      title: 'Adaptive Optics and Wavefront Sensing for Ophthalmic Imaging',
+      category: 'ADAPTIVE OPTICS',
+      status: 'current',
+      period: '2024 – Present',
+      authors: 'R. Joshi, et al.',
+      summary:
+        'Real-time correction of higher-order ocular aberrations using Shack–Hartmann wavefront sensing and a deformable mirror, enabling cellular-resolution imaging of the living retina.',
+      approach:
+        'A closed-loop adaptive optics system measures wavefront aberrations from a probe beam reflected off the retina and drives a deformable mirror at video rate, compensating for aberrations unique to each eye before they reach the imaging sensor.',
+      results:
+        'Early bench testing shows consistent Strehl-ratio improvement across a range of induced aberrations; integration with a scanning imaging channel is underway.',
+      applications: [
+        { name: 'Retinal imaging', desc: 'Cellular-resolution visualization of photoreceptors and vasculature.' },
+        { name: 'Vision science', desc: 'Studying how optical aberrations affect visual perception.' },
+        { name: 'Myopia research', desc: 'Linking peripheral aberrations to refractive-error progression.' },
+      ],
+      tech: ['Wavefront Sensing', 'Adaptive Optics', 'Deformable Mirrors', 'MATLAB'],
+      pubNote: 'Manuscript in preparation.',
+      fig1Caption: 'Adaptive optics bench with Shack–Hartmann sensor and deformable mirror in the imaging path.',
+      fig2Caption: 'Closed-loop schematic: wavefront sensing drives real-time mirror correction.',
+      hasCaseStudy: true,
+    },
+    {
+      id: 'ocular-surface-phase',
+      title: 'Phase Imaging of the Ocular Surface',
+      category: 'PHASE IMAGING',
+      status: 'current',
+      period: '2023 – Present',
+      authors: 'R. Joshi, et al.',
+      summary:
+        'Quantitative phase imaging of the tear film and ocular surface to characterize thickness dynamics and surface irregularities non-invasively.',
+      approach:
+        'A quantitative phase imaging setup captures interferometric phase data across the corneal surface, from which tear-film thickness and surface topography are reconstructed without contact or dye.',
+      results:
+        'Initial measurements show sensitivity to sub-micron tear-film thickness changes across a blink cycle.',
+      applications: [
+        { name: 'Dry eye diagnostics', desc: 'Objective, non-invasive tear-film assessment.' },
+        { name: 'Contact lens fitting', desc: 'Surface topography for lens design.' },
+        { name: 'Clinical research', desc: 'Quantifying surface dynamics over time.' },
+      ],
+      tech: ['Quantitative Phase Imaging', 'Interferometry', 'Image Processing'],
+      pubNote: 'Manuscript in preparation.',
+      fig1Caption: 'Quantitative phase imaging setup for the ocular surface.',
+      fig2Caption: 'Reconstruction pipeline from interferometric phase to tear-film thickness map.',
+      hasCaseStudy: true,
+    },
+    {
+      id: 'as-oct',
+      title: 'Anterior Segment Optical Coherence Tomography',
+      category: 'OCT',
+      status: 'current',
+      period: '2023 – Present',
+      authors: 'R. Joshi, et al.',
+      summary:
+        'High-resolution OCT imaging of the cornea and anterior chamber to support diagnostics and refractive/surgical planning.',
+      approach:
+        'A custom anterior-segment OCT system acquires cross-sectional images of the cornea, iris, and anterior chamber at high axial resolution, paired with segmentation algorithms for automated biometry.',
+      results:
+        'Automated segmentation achieves reliable corneal and anterior-chamber boundary detection across pilot scans.',
+      applications: [
+        { name: 'Corneal diagnostics', desc: 'Thickness and curvature mapping.' },
+        { name: 'Surgical planning', desc: 'Anterior chamber biometry for refractive/cataract surgery.' },
+        { name: 'Disease monitoring', desc: 'Longitudinal tracking of corneal pathology.' },
+      ],
+      tech: ['OCT', 'Image Segmentation', 'Optical Design'],
+      pubNote: 'Manuscript in preparation.',
+      fig1Caption: 'Anterior segment OCT bench with the sample and reference arms.',
+      fig2Caption: 'Segmentation pipeline for automated corneal biometry.',
+      hasCaseStudy: true,
+    },
+    {
+      id: 'eye-tracking',
+      title: 'Eye Tracking Systems and Algorithms',
+      category: 'EYE TRACKING',
+      status: 'current',
+      period: '2022 – Present',
+      authors: 'R. Joshi, et al.',
+      summary:
+        'Development of camera-based eye-tracking systems and gaze-estimation algorithms for research and clinical applications.',
+      approach:
+        'Combines corneal-reflection and pupil-detection methods with calibration models to estimate gaze direction robustly across head movement and lighting conditions.',
+      results:
+        'The current pipeline maintains sub-degree gaze accuracy under moderate head motion in bench testing.',
+      applications: [
+        { name: 'Vision research', desc: 'Fixation and saccade analysis.' },
+        { name: 'Human factors', desc: 'Attention and usability studies.' },
+        { name: 'Assistive technology', desc: 'Gaze-based interaction.' },
+      ],
+      tech: ['Computer Vision', 'Gaze Estimation', 'Python'],
+      pubNote: 'Manuscript in preparation.',
+      fig1Caption: 'Camera-based eye-tracking rig used for calibration and testing.',
+      fig2Caption: 'Gaze-estimation pipeline from corneal reflection and pupil detection to gaze vector.',
+      hasCaseStudy: true,
+    },
+    {
+      id: 'femtosecond-ri-modification',
+      title: 'Femtosecond Laser-Based Refractive Index Modification and Wavefront Metrology',
+      category: 'FEMTOSECOND LASER OPTICS',
+      status: 'current',
+      period: '2024 – Present',
+      authors: 'R. Joshi, et al.',
+      summary:
+        'Using femtosecond laser writing to locally modify refractive index within optical materials, with wavefront metrology to characterize and validate the resulting gradient-index structures.',
+      approach:
+        'Tightly focused femtosecond pulses are scanned through a substrate to induce controlled, localized refractive-index changes. The resulting structures are characterized with interferometric wavefront metrology to map induced phase profiles and validate designs against target gradient-index optics.',
+      results:
+        'Demonstrated repeatable, spatially controlled refractive-index modification with wavefront measurements confirming the intended phase profiles; work on process optimization and larger-scale structures is ongoing.',
+      applications: [
+        { name: 'Gradient-index optics', desc: 'Custom intraocular and freeform lens fabrication.' },
+        { name: 'Vision correction', desc: 'Direct refractive-index writing for personalized correction.' },
+        { name: 'Photonic devices', desc: 'Embedded waveguides and optical components.' },
+      ],
+      tech: ['Femtosecond Laser Writing', 'Wavefront Metrology', 'Interferometry', 'Optical Design'],
+      pubNote: 'Manuscript in preparation.',
+      fig1Caption: 'Femtosecond laser writing setup with beam-scanning optics over the substrate.',
+      fig2Caption: 'Wavefront metrology pipeline: interferometric measurement to reconstructed phase profile.',
+      hasCaseStudy: true,
+    },
+    {
+      id: 'underwater-imaging',
+      title: '3D Underwater Imaging Systems',
+      category: '3D IMAGING',
+      status: 'past',
+      period: '2020 – 2023',
+      authors: 'R. Joshi, M. Cho, B. Javidi',
+      summary:
+        'Advanced integral imaging techniques for capturing and visualizing dynamic underwater phenomena at high speeds, overcoming scattering and absorption limits of underwater environments.',
+      approach:
+        'Custom-designed microlens arrays, optimized for underwater light propagation, were paired with a high-speed synchronized acquisition system (>500 fps) and novel computational reconstruction algorithms for real-time 3D visualization.',
+      results:
+        'Demonstrated real-time 3D visualization underwater with significant image-quality improvement through scattering media, and robust algorithms for reconstructing dynamic scenes.',
+      applications: [
+        { name: 'Marine biology', desc: 'Study of marine life behavior in natural habitat.' },
+        { name: 'Underwater robotics', desc: 'Navigation and object detection for AUVs.' },
+        { name: 'Environmental monitoring', desc: 'Real-time ecosystem monitoring.' },
+      ],
+      tech: ['Integral Imaging', 'Machine Learning', 'Optical Design', 'MATLAB'],
+      pubNote:
+        'R. Joshi, M. Cho, B. Javidi — "Deep learning enhanced integral imaging for underwater object detection," Optics Express 31, 15234–15247 (2023).',
+      fig1Caption: 'Experimental setup for high-speed underwater 3D integral imaging.',
+      fig2Caption: 'Reconstructed 3D images of dynamic underwater scenes.',
+      hasCaseStudy: true,
+    },
+    {
+      id: 'polarimetric-imaging',
+      title: 'Dynamic Polarimetric Imaging',
+      category: 'POLARIMETRIC',
+      status: 'past',
+      period: '2021 – 2024',
+      authors: 'R. Joshi, A. Carnicer, B. Javidi',
+      summary:
+        'Development of dynamic polarimetric imaging systems for enhanced object detection and characterization through scattering media.',
+      approach:
+        'A tunable liquid-crystal analyzer swept polarization states faster than the scene changed, with a lightweight estimator computing per-pixel Stokes parameters to select the configuration maximizing target–background contrast.',
+      results:
+        'Recovered targets at higher scattering densities than fixed-polarizer and raw-intensity baselines while running the full control loop at video rate.',
+      applications: [
+        { name: 'Medical imaging', desc: 'Tissue characterization through turbid layers.' },
+        { name: 'Remote sensing', desc: 'Target detection in haze and atmosphere.' },
+        { name: 'Security & defense', desc: 'Camouflaged-object discrimination.' },
+      ],
+      tech: ['Polarimetric Imaging', 'Signal Processing', 'Optical Design'],
+      pubNote:
+        'R. Joshi, A. Carnicer, B. Javidi — "Polarimetric integral imaging for enhanced visualization through scattering media," J. Display Technology 18, 892–901 (2022).',
+      fig1Caption: 'Dynamic polarimetric imaging bench with tunable analyzer stage.',
+      fig2Caption: 'Adaptive feedback loop: Stokes estimation drives analyzer selection.',
+      hasCaseStudy: true,
+    },
+    {
+      id: 'computational-imaging',
+      title: 'Computational Imaging Techniques',
+      category: 'COMPUTATIONAL',
+      status: 'past',
+      period: '2019 – 2023',
+      authors: 'R. Joshi, et al.',
+      summary:
+        'Implementation of computational imaging techniques, including deep-learning reconstruction, for enhanced image recovery and analysis.',
+      approach:
+        'Neural reconstruction pipelines were trained to recover scene detail lost to noise, blur, and scattering, integrated with conventional optical acquisition hardware.',
+      results:
+        'Achieved measurable gains in reconstruction fidelity over classical deconvolution baselines across several imaging modalities.',
+      applications: [
+        { name: 'Medical diagnostics', desc: 'Enhanced clinical image recovery.' },
+        { name: 'Scientific research', desc: 'Recovering detail in low-SNR data.' },
+        { name: 'Industrial inspection', desc: 'Defect detection under noisy imaging.' },
+      ],
+      tech: ['Machine Learning', 'Image Processing', 'Python', 'TensorFlow'],
+      pubNote: 'Findings incorporated into the underwater and polarimetric imaging publications above.',
+      fig1Caption: 'Computational imaging reconstruction pipeline.',
+      fig2Caption: 'Comparison of raw and reconstructed image quality.',
+      hasCaseStudy: true,
+    },
+    {
+      id: 'optical-microscopy',
+      title: 'Advanced Optical Microscopy',
+      category: 'MICROSCOPY',
+      status: 'past',
+      period: '2018 – 2022',
+      authors: 'R. Joshi, et al.',
+      summary:
+        'Design and optimization of optical microscopy systems for high-resolution imaging and characterization, including a wide-field fiber-optic micro-endoscope.',
+      approach:
+        'A high-resolution wide-field fiber-optic micro-endoscopic system was developed and optimized, balancing field of view, resolution, and fiber-bundle constraints.',
+      results:
+        'Delivered a working wide-field micro-endoscopic prototype with improved resolution over comparable fiber-bundle systems.',
+      applications: [
+        { name: 'Biological research', desc: 'High-resolution tissue imaging.' },
+        { name: 'Material science', desc: 'Microstructure characterization.' },
+        { name: 'Quality control', desc: 'Micro-scale inspection.' },
+      ],
+      tech: ['Optical Design', 'Microscopy', 'Image Analysis'],
+      pubNote: 'Developed as part of graduate dissertation work at IIT Delhi.',
+      fig1Caption: 'High-resolution wide-field optical microscopy setup.',
+      fig2Caption: 'Fiber-optic micro-endoscope design schematic.',
+      hasCaseStudy: true,
+    },
+    {
+      id: 'personalized-optics',
+      title: 'Optical System Design for Personalization, Wavefront Correction, and Myopia Control',
+      category: 'OPTICAL DESIGN',
+      status: 'future',
+      period: 'Planned',
+      authors: 'R. Joshi',
+      summary:
+        'A proposed research direction combining individualized wavefront correction with optical designs aimed at controlling myopia progression.',
+      applications: [
+        { name: 'Personalized eyewear', desc: 'Aberration-corrected lens design per patient.' },
+        { name: 'Myopia control', desc: 'Optical strategies to slow refractive-error progression.' },
+      ],
+      tech: ['Optical Design', 'Wavefront Correction'],
+      pubNote: 'Proposal stage — no publications yet.',
+      fig1Caption: 'Concept: personalized optical correction integrated with myopia-control design.',
+      fig2Caption: '',
+      hasCaseStudy: false,
+    },
+  ],
 
   education: [
     {
-      degree: 'Doctor of Philosophy (PhD) in Electrical and Computer Engineering',
+      degree: 'Doctor of Philosophy (PhD), Electrical and Computer Engineering',
       institution: 'University of Connecticut, USA',
       year: '2024',
-      description: 'Dissertation: "Optical signal detection and image sensing in scattering medium using Integral Imaging and Deep neural networks"',
-      specialization: 'Specialization: Photonics',
-      location: 'Storrs, CT'
+      location: 'Storrs, CT',
+      detail:
+        'Dissertation: "Optical signal detection and image sensing in scattering medium using Integral Imaging and Deep neural networks." Specialization: Photonics.',
     },
     {
-      degree: 'Master of Science in Electrical and Computer Engineering',
+      degree: 'Master of Science, Electrical and Computer Engineering',
       institution: 'University of Connecticut, USA',
       year: '2020',
-      description: 'Focus: Optical imaging, Polarization imaging, Computational Optics, 3D Imaging',
-      location: 'Storrs, CT'
+      location: 'Storrs, CT',
+      detail: 'Focus: Optical imaging, polarization imaging, computational optics, 3D imaging.',
     },
     {
-      degree: 'Master of Technology in Applied Optics',
+      degree: 'Master of Technology, Applied Optics',
       institution: 'Indian Institute of Technology Delhi, India',
       year: '2018',
-      description: 'Dissertation: "Development of high-resolution wide-field fiber optic micro-endoscopic system"',
-      location: 'New Delhi, India'
+      location: 'New Delhi, India',
+      detail: 'Dissertation: "Development of high-resolution wide-field fiber optic micro-endoscopic system."',
     },
     {
-      degree: 'Master of Science in Physics',
+      degree: 'Master of Science, Physics',
       institution: 'GBPUA&T Pantnagar, India',
       year: '2016',
-      description: 'Dissertation: "Quantum computation using teleportation and single-qubit gates"',
-      location: 'Uttarakhand, India'
+      location: 'Uttarakhand, India',
+      detail: 'Dissertation: "Quantum computation using teleportation and single-qubit gates."',
     },
     {
-      degree: 'Bachelor of Science',
-      institution: 'LSM PG college, Kumaon University Pithoragarh, India',
+      degree: 'Bachelor of Science, Physics / Mathematics / Chemistry',
+      institution: 'LSM PG College, Kumaon University Pithoragarh, India',
       year: '2014',
-      description: 'Physics, Mathematics, Chemistry',
-      location: 'Uttarakhand, India'
-    }
+      location: 'Uttarakhand, India',
+    },
   ],
 
   experience: [
     {
       title: 'Postdoctoral Research Associate',
-      company: 'University of Connecticut',
+      org: 'University of Connecticut',
       location: 'Storrs, CT',
-      startDate: '2024-01',
-      description: 'Leading advanced research in optical imaging and computational optics',
-      responsibilities: [
-        'Develop novel optical imaging systems',
-        'Implement machine learning algorithms for image processing',
+      dates: '2024 – Present',
+      points: [
+        'Develop novel optical imaging and correction systems for ocular research',
+        'Implement machine learning algorithms for image and signal processing',
         'Publish research findings in peer-reviewed journals',
-        'Mentor graduate students in optical engineering'
+        'Mentor graduate students in optical engineering',
       ],
-      technologies: ['MATLAB', 'Python', 'LabVIEW', 'Zemax', 'Deep Learning']
     },
     {
       title: 'Graduate Research Assistant',
-      company: 'University of Connecticut',
+      org: 'University of Connecticut',
       location: 'Storrs, CT',
-      startDate: '2018-08',
-      endDate: '2024-01',
-      description: 'Conducted research in integral imaging and computational optics',
-      responsibilities: [
-        'Designed and built optical systems for underwater imaging',
+      dates: '2018 – 2024',
+      points: [
+        'Designed and built optical systems for underwater and polarimetric imaging',
         'Developed algorithms for 3D image reconstruction',
         'Published research papers and presented at conferences',
-        'Collaborated with interdisciplinary research teams'
+        'Collaborated with interdisciplinary research teams',
       ],
-      technologies: ['MATLAB', 'Python', 'OpenCV', 'TensorFlow', 'Optical Design']
-    }
-  ],
-
-  skills: [
-    { name: 'Optical System Design', category: 'Optics', level: 5 },
-    { name: 'Zemax OpticStudio', category: 'Software', level: 5 },
-    { name: 'MATLAB', category: 'Programming', level: 5 },
-    { name: 'Python', category: 'Programming', level: 4 },
-    { name: 'LabVIEW', category: 'Software', level: 4 },
-    { name: 'Machine Learning', category: 'AI/ML', level: 4 },
-    { name: 'TensorFlow/PyTorch', category: 'AI/ML', level: 4 },
-    { name: 'Integral Imaging', category: 'Imaging', level: 5 },
-    { name: 'Polarimetric Imaging', category: 'Imaging', level: 4 },
-    { name: 'Optical Microscopy', category: 'Imaging', level: 4 },
-    { name: 'Image Processing', category: 'Signal Processing', level: 5 },
-    { name: 'Computer Vision', category: 'AI/ML', level: 4 }
+    },
   ],
 
   publications: [
     {
       id: 'pub1',
       title: 'Deep learning enhanced integral imaging for underwater object detection',
-      authors: ['R. Joshi', 'M. Cho', 'B. Javidi'],
-      journal: 'Optics Express',
-      year: 2023,
-      volume: '31',
-      pages: '15234-15247',
-      doi: '10.1364/OE.489234',
-      type: 'journal',
-      tags: ['integral imaging', 'deep learning', 'underwater imaging'],
-      abstract: 'We present a novel approach combining integral imaging with deep neural networks for enhanced underwater object detection capabilities.'
+      authors: 'R. Joshi, M. Cho, B. Javidi',
+      venue: 'Optics Express',
+      year: '2023',
+      pages: '31, 15234–15247',
+      tags: ['Integral Imaging', 'Deep Learning', 'Underwater Imaging'],
     },
     {
       id: 'pub2',
       title: 'Polarimetric integral imaging for enhanced visualization through scattering media',
-      authors: ['R. Joshi', 'A. Carnicer', 'B. Javidi'],
-      journal: 'Journal of Display Technology',
-      year: 2022,
-      volume: '18',
-      pages: '892-901',
-      type: 'journal',
-      tags: ['polarimetric imaging', 'integral imaging', 'scattering media']
-    }
+      authors: 'R. Joshi, A. Carnicer, B. Javidi',
+      venue: 'Journal of Display Technology',
+      year: '2022',
+      pages: '18, 892–901',
+      tags: ['Polarimetric Imaging', 'Integral Imaging', 'Scattering Media'],
+    },
   ],
 
-  projects: [
+  blogPosts: [
     {
-      id: 'underwater-imaging',
-      title: '3D Underwater Imaging Systems',
-      slug: 'underwater-imaging',
-      category: '3d-imaging',
-      description: 'Advanced integral imaging techniques for capturing and visualizing dynamic underwater phenomena at high speeds.',
-      detailedDescription: 'This research explores advanced integral imaging techniques for capturing and visualizing dynamic underwater phenomena at high speeds. The system combines specialized optical arrays with computational reconstruction algorithms to achieve real-time 3D visualization of rapidly changing underwater scenes.',
-      objectives: [
-        'Develop high-speed 3D imaging systems for underwater applications',
-        'Overcome traditional limitations of underwater imaging such as scattering and absorption',
-        'Create real-time visualization capabilities for dynamic monitoring'
-      ],
-      methodology: [
-        'Custom-designed microlens arrays optimized for underwater light propagation',
-        'High-speed synchronized image acquisition system (>500 fps)',
-        'Novel computational reconstruction algorithms'
-      ],
-      results: [
-        'Successfully demonstrated real-time 3D visualization underwater',
-        'Achieved significant improvement in image quality through scattering media',
-        'Developed robust algorithms for dynamic scene reconstruction'
-      ],
-      applications: [
-        'Marine biology research',
-        'Underwater robotics',
-        'Environmental monitoring systems',
-        'Underwater archaeology'
-      ],
-      technologies: ['Integral Imaging', 'Machine Learning', 'Optical Design', 'MATLAB', 'Python'],
-      startDate: '2020-01',
-      endDate: '2023-12',
-      status: 'completed',
-      images: [
-        {
-          url: '/websiteRJ/images/research/fig1.jpg',
-          alt: 'Underwater imaging system setup',
-          caption: 'Experimental setup for underwater 3D imaging',
-          type: 'setup'
-        },
-        {
-          url: '/websiteRJ/images/research/fig2.jpg',
-          alt: 'Reconstructed 3D images',
-          caption: 'Examples of 3D reconstructed underwater scenes',
-          type: 'result'
-        }
-      ],
-      publications: ['pub1'],
-      relatedProjects: ['polarimetric-imaging']
+      date: 'March 2024',
+      title: 'Starting a new line of work: adaptive optics for ophthalmic imaging',
+      blurb:
+        'Kicking off a project on real-time wavefront correction for retinal imaging — first update on the bench build coming soon.',
     },
     {
-      id: 'polarimetric-imaging',
-      title: 'Dynamic Polarimetric Imaging',
-      slug: 'dynamic-polarimetric-imaging',
-      category: 'polarimetric',
-      description: 'Development of dynamic polarimetric imaging systems for enhanced object detection and characterization.',
-      detailedDescription: 'Research focused on developing advanced polarimetric imaging techniques that can dynamically adapt to varying environmental conditions and target properties.',
-      objectives: [
-        'Develop adaptive polarimetric imaging systems',
-        'Enhance object detection in challenging environments',
-        'Create robust algorithms for polarization analysis'
-      ],
-      applications: [
-        'Medical imaging',
-        'Remote sensing',
-        'Security applications',
-        'Material characterization'
-      ],
-      technologies: ['Polarimetric Imaging', 'Signal Processing', 'Optical Design'],
-      startDate: '2021-06',
-      endDate: '2024-01',
-      status: 'completed',
-      images: [
-        {
-          url: '/websiteRJ/images/research/fig3.jpg',
-          alt: 'Polarimetric imaging setup',
-          caption: 'Dynamic polarimetric imaging system',
-          type: 'setup'
-        }
-      ],
-      publications: ['pub2'],
-      relatedProjects: ['underwater-imaging']
+      date: 'January 2024',
+      title: 'Joined UConn as a Postdoctoral Research Associate',
+      blurb:
+        'Continuing research in optical imaging and computational optics, now focused on ocular applications.',
     },
     {
-      id: 'computational-imaging',
-      title: 'Computational Imaging Techniques',
-      slug: 'computational-imaging',
-      category: 'computational',
-      description: 'Implementation of innovative computational imaging techniques for enhanced image reconstruction and analysis.',
-      applications: [
-        'Medical diagnostics',
-        'Scientific research',
-        'Industrial inspection',
-        'Astronomical imaging'
-      ],
-      technologies: ['Machine Learning', 'Image Processing', 'Python', 'TensorFlow'],
-      startDate: '2019-01',
-      status: 'ongoing',
-      images: [
-        {
-          url: '/websiteRJ/images/research/fig4.jpg',
-          alt: 'Computational imaging results',
-          caption: 'Enhanced images using computational techniques',
-          type: 'result'
-        }
-      ]
+      date: 'November 2023',
+      title: 'Paper published in Optics Express',
+      blurb:
+        '"Deep learning enhanced integral imaging for underwater object detection" is now out — see the Publications page.',
     },
     {
-      id: 'optical-microscopy',
-      title: 'Advanced Optical Microscopy',
-      slug: 'optical-microscopy',
-      category: 'microscopy',
-      description: 'Design and optimization of optical microscopy systems for high-resolution imaging and characterization.',
-      applications: [
-        'Biological research',
-        'Material science',
-        'Nanotechnology',
-        'Quality control'
-      ],
-      technologies: ['Optical Design', 'Microscopy', 'Image Analysis'],
-      startDate: '2018-08',
-      status: 'ongoing',
-      images: [
-        {
-          url: '/websiteRJ/images/research/fig5.jpg',
-          alt: 'Microscopy system',
-          caption: 'High-resolution optical microscopy setup',
-          type: 'setup'
-        }
-      ]
+      date: 'August 2022',
+      title: 'Presented polarimetric imaging work at an Optica conference',
+      blurb: 'Shared early results on dynamic polarimetric imaging for detection through scattering media.',
     },
-    {
-      id: '3d-imaging-systems',
-      title: '3D Imaging Systems Development',
-      slug: '3d-imaging-systems',
-      category: '3d-imaging',
-      description: 'Comprehensive development of 3D imaging systems for various applications.',
-      applications: [
-        'Metrology',
-        'Quality inspection',
-        '3D visualization',
-        'Augmented reality'
-      ],
-      technologies: ['3D Imaging', 'Stereo Vision', 'Point Cloud Processing'],
-      startDate: '2020-01',
-      status: 'ongoing',
-      images: [
-        {
-          url: '/websiteRJ/images/research/fig6.jpg',
-          alt: '3D imaging results',
-          caption: '3D reconstructed objects and scenes',
-          type: 'result'
-        }
-      ]
-    }
   ],
-
-  categories: [
-    {
-      id: '3d-imaging',
-      name: '3D Imaging Systems',
-      description: 'Advanced 3D imaging and visualization technologies',
-      icon: 'Cube',
-      color: 'blue',
-      projects: ['underwater-imaging', '3d-imaging-systems']
-    },
-    {
-      id: 'polarimetric',
-      name: 'Polarimetric Imaging',
-      description: 'Polarization-based imaging and analysis',
-      icon: 'Zap',
-      color: 'purple',
-      projects: ['polarimetric-imaging']
-    },
-    {
-      id: 'computational',
-      name: 'Computational Imaging',
-      description: 'AI and ML enhanced imaging techniques',
-      icon: 'Brain',
-      color: 'green',
-      projects: ['computational-imaging']
-    },
-    {
-      id: 'microscopy',
-      name: 'Optical Microscopy',
-      description: 'High-resolution microscopy systems and techniques',
-      icon: 'Microscope',
-      color: 'orange',
-      projects: ['optical-microscopy']
-    }
-  ],
-
-  pages: {
-    home: {
-      title: 'Home',
-      description: 'Research portfolio of Rakesh Joshi',
-      sections: [
-        { id: 'hero', type: 'hero', content: {} },
-        { id: 'about', type: 'about', content: {} },
-        { id: 'skills', type: 'skills', content: {} },
-        { id: 'experience', type: 'experience', content: {} },
-        { id: 'contact', type: 'contact', content: {} }
-      ]
-    },
-    research: {
-      title: 'Research',
-      description: 'Optical research projects and innovations',
-      sections: [
-        { id: 'research-overview', type: 'research-overview', content: {} },
-        { id: 'project-grid', type: 'project-grid', content: {} }
-      ]
-    },
-    publications: {
-      title: 'Publications',
-      description: 'Academic publications and research papers',
-      sections: [
-        { id: 'publications-list', type: 'publications-list', content: {} }
-      ]
-    }
-  }
 };

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { visitTracker, VisitorStats } from '../services/visitTracker';
 
 export const useVisitTracker = () => {
@@ -32,25 +32,25 @@ export const useVisitTracker = () => {
     };
   }, []);
 
-  const trackPageView = (page: string) => {
+  const trackPageView = useCallback((page: string) => {
     visitTracker.trackPageView(page);
     setStats(visitTracker.getVisitorStats());
-  };
+  }, []);
 
-  const getStats = () => {
+  const getStats = useCallback(() => {
     const currentStats = visitTracker.getVisitorStats();
     setStats(currentStats);
     return currentStats;
-  };
+  }, []);
 
-  const clearData = () => {
+  const clearData = useCallback(() => {
     visitTracker.clearVisitData();
     setStats(visitTracker.getVisitorStats());
-  };
+  }, []);
 
-  const exportData = () => {
+  const exportData = useCallback(() => {
     return visitTracker.exportVisitData();
-  };
+  }, []);
 
   return {
     stats,
