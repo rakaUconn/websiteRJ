@@ -188,21 +188,25 @@ export const siteData: SiteData = {
       status: 'current',
       period: '2025 – Present',
       authors: 'R. Joshi, et al.',
+      institution: 'University of Houston College of Optometry',
       summary:
-        'Using femtosecond laser writing to locally modify refractive index within optical materials, with wavefront metrology to characterize and validate the resulting gradient-index structures.',
+        'High-power femtosecond laser-based refractive index (RI) modification for personalized vision correction — creating tailored phase profiles directly in optical materials as an alternative to conventional custom contact lenses, which can cause discomfort and warping. This work demonstrates the feasibility of writing RI structures in PMMA and characterizes the resulting change in optical path length.',
       approach:
-        'Tightly focused femtosecond pulses are scanned through a substrate to induce controlled, localized refractive-index changes. The resulting structures are characterized with interferometric wavefront metrology to map induced phase profiles and validate designs against target gradient-index optics.',
+        'A 130 fs, 1030 nm femtosecond laser (1.5 W at 1 MHz, 1.5 µJ/pulse) is routed through a femtosecond acousto-optic modulator (FSAOM) for fast pulse-train modulation, with a waveform generator reducing the repetition rate to 250 kHz and a half-wave-plate/polarizer pair attenuating pulse energy to 0.2 µJ. The beam is routed through a delivery system built around a Michelson interferometer and a BBO crystal stage (1030 → 515 nm), then focused onto a PMMA slide mounted on a 3D translation stage. Raster-scanning the sample writes a 2D RI profile; optimized translation parameters enable multi-layered, stacked structures. A Mach-Zehnder interferometer (660 nm source) measures the resulting change in optical path length.',
       results:
-        'Demonstrated repeatable, spatially controlled refractive-index modification with wavefront measurements confirming the intended phase profiles; work on process optimization and larger-scale structures is ongoing.',
+        'A single femtosecond pulse produces a transverse RI modification of approximately 5 µm. A translation speed of 50 mm/s (≈0.2 µm feature separation) produced consistent RI structures, with 2 µm line spacing in the raster scan giving a smooth RI profile. Three stacked RI layers separated by 200 µm produced a measured optical path length shift of approximately 0.15 wavelengths at 660 nm — demonstrating that localized RI modifications can be overlapped to induce an accumulated, tunable optical path length difference.',
       applications: [
-        { name: 'Gradient-index optics', desc: 'Custom intraocular and freeform lens fabrication.' },
-        { name: 'Vision correction', desc: 'Direct refractive-index writing for personalized correction.' },
-        { name: 'Photonic devices', desc: 'Embedded waveguides and optical components.' },
+        { name: 'Vision correction', desc: 'Tailored, direct-written phase profiles as an alternative to custom contact lenses.' },
+        { name: 'Gradient-index optics', desc: 'Multi-layer RI structures for custom intraocular and freeform lens fabrication.' },
+        { name: 'Optical metrology', desc: 'Interferometric characterization of induced optical path length changes.' },
       ],
-      tech: ['Femtosecond Laser Writing', 'Wavefront Metrology', 'Interferometry', 'Optical Design'],
-      pubNote: 'Manuscript in preparation.',
-      fig1Caption: 'Femtosecond laser writing setup with beam-scanning optics over the substrate.',
+      tech: ['Femtosecond Laser Writing', 'Refractive Index Modification', 'Mach-Zehnder Interferometry', 'PMMA', 'Wavefront Metrology'],
+      pubNote:
+        'R. Joshi, et al., "Femtosecond Laser-Based Refractive Index Modification for Personalized Vision Correction," presented at the 2025 ARVO Annual Meeting, Salt Lake City, UT, May 4–8, 2025.',
+      fig1Caption:
+        'Femtosecond laser beam delivery system. The FSAOM-modulated 1030 nm beam passes through a half-wave-plate/polarizer attenuator, a Michelson interferometer and BBO crystal stage (1030 → 515 nm), and folding/dichroic optics before reaching the beam delivery system that focuses the beam onto the sample.',
       fig2Caption: 'Wavefront metrology pipeline: interferometric measurement to reconstructed phase profile.',
+      fig1Src: 'images/research/femtosecond-ri-modification-fig1.jpg',
       hasCaseStudy: true,
     },
     {
