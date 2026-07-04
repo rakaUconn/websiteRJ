@@ -36,13 +36,29 @@ const ProjectRow: React.FC<ProjectRowProps> = ({ proj, onClick, dimmed = false, 
       opacity: dimmed ? 0.88 : 1,
     }}
   >
-    <ImagePlaceholder
-      style={{
-        width: dashed ? 110 : 130,
-        height: dashed ? 110 : 130,
-        aspectRatio: '1',
-      }}
-    />
+    {proj.fig1Src ? (
+      <img
+        src={`${import.meta.env.BASE_URL}${proj.fig1Src}`}
+        alt={proj.fig1Caption}
+        style={{
+          width: dashed ? 110 : 130,
+          height: dashed ? 110 : 130,
+          aspectRatio: '1',
+          objectFit: 'contain',
+          background: '#fff',
+          borderRadius: 5,
+          flexShrink: 0,
+        }}
+      />
+    ) : (
+      <ImagePlaceholder
+        style={{
+          width: dashed ? 110 : 130,
+          height: dashed ? 110 : 130,
+          aspectRatio: '1',
+        }}
+      />
+    )}
     <div>
       <div
         style={{
