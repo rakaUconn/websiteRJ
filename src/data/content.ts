@@ -57,7 +57,7 @@ export const siteData: SiteData = {
         'Wavefront maps, single pass (632.8 nm, 6.4 mm pupil). The open-loop DL (center) intentionally introduces a large, well-characterized defocus term; closed-loop correction (right) flattens it to a near-uniform residual.',
       fig3Caption:
         'Wavefront maps, double pass (940 nm, 5.7 mm pupil). Native system aberration (left) is larger than in the single-pass visible test since it accumulates over the full round trip; closed-loop correction (right) brings it back down substantially.',
-      fig1Src: 'images/research/adaptive-optics-fig1.png',
+      fig1Src: 'images/research/adaptive-optics-fig1.jpg',
       fig2Src: 'images/research/adaptive-optics-fig2.jpg',
       fig3Src: 'images/research/adaptive-optics-fig3.jpg',
       hasCaseStudy: true,

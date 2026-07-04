@@ -131,7 +131,17 @@ function HomePage() {
 
         {/* Right column — portrait */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <ImagePlaceholder style={{ aspectRatio: '4/5', borderRadius: 6 }} />
+          <img
+            src={`${import.meta.env.BASE_URL}images/research/profile.jpg`}
+            alt="Rakesh Joshi"
+            style={{
+              width: '100%',
+              aspectRatio: '4/5',
+              objectFit: 'cover',
+              borderRadius: 6,
+              display: 'block',
+            }}
+          />
           <span
             style={{
               font: "italic 400 12px/1.4 'Spectral', serif",
@@ -200,7 +210,23 @@ function HomePage() {
               onClick={() => navigate(`/research/${proj.id}`)}
               style={{ cursor: 'pointer' }}
             >
-              <ImagePlaceholder style={{ aspectRatio: '3/2', borderRadius: 5, marginBottom: 12 }} />
+              {proj.fig1Src ? (
+                <img
+                  src={`${import.meta.env.BASE_URL}${proj.fig1Src}`}
+                  alt={proj.fig1Caption}
+                  style={{
+                    width: '100%',
+                    aspectRatio: '3/2',
+                    objectFit: 'contain',
+                    background: '#fff',
+                    borderRadius: 5,
+                    marginBottom: 12,
+                    display: 'block',
+                  }}
+                />
+              ) : (
+                <ImagePlaceholder style={{ aspectRatio: '3/2', borderRadius: 5, marginBottom: 12 }} />
+              )}
               <div
                 style={{
                   font: "500 10px/1 'IBM Plex Mono', monospace",
