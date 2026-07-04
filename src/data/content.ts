@@ -251,23 +251,34 @@ export const siteData: SiteData = {
       category: 'POLARIMETRIC',
       status: 'past',
       period: '2021 – 2024',
-      authors: 'R. Joshi, A. Carnicer, B. Javidi',
+      authors: 'J. Lee, R. Joshi, B. Javidi',
+      institution: 'University of Connecticut — Electrical and Computer Engineering Department',
       summary:
-        'Development of dynamic polarimetric imaging systems for enhanced object detection and characterization through scattering media.',
+        'A dynamic polarimetric 3D integral imaging profilometry technique that overcomes the fundamental limitation of conventional polarimetric profilometry — the need for sequentially captured polarized elemental images — by assigning different fixed polarizer angles to different cameras in an array, enabling simultaneous capture of depth and polarization information from dynamic scenes under natural illumination.',
       approach:
-        'A tunable liquid-crystal analyzer swept polarization states faster than the scene changed, with a lightweight estimator computing per-pixel Stokes parameters to select the configuration maximizing target–background contrast.',
+        "Polarimetric 3D integral imaging normally computes Stokes parameters and Degree of Linear Polarization (DoLP) from elemental images captured sequentially at 0°, 45°, 90°, and 135° polarizer angles — a bottleneck for dynamic scenes, since temporal separation between polarization channels causes misregistration. This method instead assigns a fixed polarizer angle to each camera in a 3×3 array (12.5 mm focal length, 70 mm pitch, 1600×1200 elemental images), so all four polarization states are captured simultaneously from different perspectives. Because the array has multiple cameras per angle, 24 valid four-camera combinations can be formed, each yielding a normalized polarimetric voxel intensity; combining and computing the variance across all 24 combinations produces both a depth map (via minimum-variance depth estimation) and a 3D polarimetric (DoLP) profile — reconstructed simultaneously at 10 fps.",
       results:
-        'Recovered targets at higher scattering densities than fixed-polarizer and raw-intensity baselines while running the full control loop at video rate.',
+        'Under natural illumination, the system tracked three moving objects (drone, kettle, submarine) and one static object (vase) at reference depths of 1930–2530 mm, reconstructing depth and polarimetric profiles at 10 fps with frame-to-frame depth coefficient of variation below 0.0062 for all objects. Compared to conventional polarimetric profilometry on a static scene, the new method reduced the standard deviation of depth within a uniform-depth region from 46 mm to 19 mm, since combining 24 polarization-combination measurements (versus one per camera in the conventional approach) yields substantially more stable depth reconstruction.',
       applications: [
-        { name: 'Medical imaging', desc: 'Tissue characterization through turbid layers.' },
-        { name: 'Remote sensing', desc: 'Target detection in haze and atmosphere.' },
-        { name: 'Security & defense', desc: 'Camouflaged-object discrimination.' },
+        { name: 'Marine environmental monitoring', desc: 'Depth and polarization sensing of dynamic scenes in natural outdoor light.' },
+        { name: 'Autonomous vehicle perception', desc: 'Real-time material and depth sensing for automotive remote sensing.' },
+        { name: 'Defense & security', desc: 'Real-time detection and classification of moving targets using polarization signatures.' },
       ],
-      tech: ['Polarimetric Imaging', 'Signal Processing', 'Optical Design'],
+      tech: ['Polarimetric Integral Imaging', 'Stokes Parameters', 'DoLP', '3D Profilometry', 'Camera Arrays'],
       pubNote:
-        'R. Joshi, A. Carnicer, B. Javidi — "Polarimetric integral imaging for enhanced visualization through scattering media," J. Display Technology 18, 892–901 (2022).',
-      fig1Caption: 'Dynamic polarimetric imaging bench with tunable analyzer stage.',
-      fig2Caption: 'Adaptive feedback loop: Stokes estimation drives analyzer selection.',
+        'J. Lee, R. Joshi, B. Javidi, "Dynamic Polarimetric 3D Integral Imaging Profilometry," manuscript in preparation, Electrical and Computer Engineering Department, University of Connecticut.',
+      fig1Caption:
+        'Experimental scene under natural illumination, with a kettle, vase, drone, and submarine at different depths. (a) Reference image captured in natural lighting. (b) Schematic diagram of object placement and reference depths (1930–2530 mm).',
+      fig2Caption:
+        'Dynamic polarimetric integral imaging concept: each camera in the array is assigned a different fixed polarizer angle (0°, 45°, 90°, 135°), enabling simultaneous multi-perspective, multi-polarization capture of a dynamic scene.',
+      fig3Caption:
+        'Time-lapse reconstruction of the submarine (z = 2060 mm) as it moves under natural illumination — 3D polarimetric information (grayscale) and depth map (color) reconstructed at 10 fps.',
+      fig4Caption:
+        'Depth-map comparison for a static scene. (a) Original intensity image. (b) Depth map from conventional polarimetric profilometry — depth std. dev. of 46 mm in the uniform-depth region (orange box). (c) Depth map from the dynamic polarimetric method — std. dev. reduced to 19 mm.',
+      fig1Src: 'images/research/polarimetric-imaging-fig1.jpg',
+      fig2Src: 'images/research/polarimetric-imaging-fig2.jpg',
+      fig3Src: 'images/research/polarimetric-imaging-fig3.jpg',
+      fig4Src: 'images/research/polarimetric-imaging-fig4.jpg',
       hasCaseStudy: true,
     },
     {
