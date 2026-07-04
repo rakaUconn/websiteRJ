@@ -144,21 +144,41 @@ export const siteData: SiteData = {
       status: 'current',
       period: '2022 – Present',
       authors: 'R. Joshi, et al.',
+      institution: 'University of Houston College of Optometry — High-Resolution Ocular Imaging Laboratory',
       summary:
-        'Development of camera-based eye-tracking systems and gaze-estimation algorithms for research and clinical applications.',
+        'A comprehensive optical-physics and image-processing treatment of dual Purkinje image (DPI) eye tracking using the first (P1, anterior cornea) and fourth (P4, posterior lens) Purkinje–Sanson reflexes for single-eye, head-motion-invariant gaze estimation.',
       approach:
-        'Combines corneal-reflection and pupil-detection methods with calibration models to estimate gaze direction robustly across head movement and lighting conditions.',
+        'The eye is modeled with the Gullstrand (1909) schematic eye\'s four refracting surfaces to derive Fresnel reflectance, Snell\'s-law angle compression, and a five-factor P4 intensity model, identifying θ = 15°–20° oblique illumination as the optimal operating point that keeps P1 and P4 spatially separated without sacrificing intensity. Because P1 is ~72× brighter than P4 at normal incidence (RP1 ≈ 1.96% vs. RP4 ≈ 0.027%), a combined optical and computational strategy is applied: p-polarized illumination with a matched analyzer, a spatial neutral-density filter at the pupil conjugate, and annular ring illumination on the optical side; HDR dual-exposure acquisition, strobed LED background subtraction, logarithmic tone-mapping, Difference-of-Gaussians blob detection, and sub-pixel 2D Gaussian centroid fitting on the processing side. The resulting Purkinje vector Δ = p1 − p4 is calibrated with a standard 5-/9-point procedure and tracked through blinks with a constant-velocity Kalman filter.',
       results:
-        'The current pipeline maintains sub-degree gaze accuracy under moderate head motion in bench testing.',
+        'The combined optical and processing pipeline yields a cumulative ≈200× gain on the effective P4/P1 intensity ratio, raising it from 1/72 (1.4%) to ≈1/0.36 (≈280%), making both reflexes reliably detectable on a single sensor frame. The Cramér–Rao bound on centroid localization gives σ ≈ 0.5 px for P4 at SNR ≈ 10, corresponding to sub-0.1° gaze precision; a real-time CUDA pipeline on an RTX 3080 completes detection and tracking in 2.1 ms per frame, well within the 5.9 ms budget at 170 fps (64% timing margin). The Purkinje vector\'s inherent immunity to translational head motion, combined with 5-point calibration, targets < 0.1° angular gaze accuracy within a ±15° central field.',
       applications: [
-        { name: 'Vision research', desc: 'Fixation and saccade analysis.' },
-        { name: 'Human factors', desc: 'Attention and usability studies.' },
-        { name: 'Assistive technology', desc: 'Gaze-based interaction.' },
+        { name: 'Vision research', desc: 'Fixation and saccade analysis with head-motion-invariant gaze tracking.' },
+        { name: 'Clinical & adaptive optics', desc: 'Gaze-stabilized retinal imaging and aberrometry requiring simultaneous P1/P4 measurement.' },
+        { name: 'Assistive technology', desc: 'High-precision gaze-based interaction and human-factors studies.' },
       ],
-      tech: ['Computer Vision', 'Gaze Estimation', 'Python'],
-      pubNote: 'Manuscript in preparation.',
-      fig1Caption: 'Camera-based eye-tracking rig used for calibration and testing.',
-      fig2Caption: 'Gaze-estimation pipeline from corneal reflection and pupil detection to gaze vector.',
+      tech: [
+        'Dual Purkinje Imaging (DPI)',
+        'Fresnel Optics',
+        'HDR Imaging',
+        'Difference-of-Gaussians',
+        'Kalman Filtering',
+        'CUDA',
+        'Python',
+      ],
+      pubNote:
+        'Technical Report, "Dual Purkinje Image Eye Tracking Using P1 and P4 Reflexes for Single-Eye Gaze Estimation," University of Houston College of Optometry, High-Resolution Ocular Imaging Laboratory.',
+      fig1Caption:
+        'Gullstrand schematic eye cross-section with dual Purkinje reflex geometry. An oblique illumination ray (green) enters at θ = 15°: P1 (blue dashed) reflects off-axis from the anterior cornea, while P4 (gold dashed) is focused near the optical axis by the concave posterior lens surface.',
+      fig2Caption:
+        'Image processing pipeline: (a) raw sensor image with dominant P1 and buried P4; (b–c) short/long exposure frames; (d) background-subtracted image; (e) logarithmic tone-map; (f) Difference-of-Gaussians blob filter; (g) P4 region of interest; (h) final centroid overlay with sub-pixel P1 and P4 positions.',
+      fig3Caption:
+        'Strategy-by-strategy gain on the effective P4/P1 intensity ratio. (Left) Individual gain factor per strategy — optical (blue), image processing (gold), detection (green). (Right) Cumulative P4/P1 ratio (log scale) as each strategy stacks, reaching ≈3412% — a ≈200× improvement over the 1.4% baseline.',
+      fig4Caption:
+        '(Left) Sensor-plane positions of P1 and P4 for two gaze angles — P1 moves ~1.6× faster than P4 with eye rotation. (Right) P1 displacement, P4 displacement, and the Purkinje vector Δ = δP1 − δP4 vs. gaze angle; the vector is monotonic and approximately linear, enabling simple calibration.',
+      fig1Src: 'images/research/eye-tracking-fig1.jpg',
+      fig2Src: 'images/research/eye-tracking-fig2.jpg',
+      fig3Src: 'images/research/eye-tracking-fig3.jpg',
+      fig4Src: 'images/research/eye-tracking-fig4.jpg',
       hasCaseStudy: true,
     },
     {
