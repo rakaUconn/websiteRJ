@@ -5,19 +5,19 @@ export const siteData: SiteData = {
     name: 'Rakesh Joshi',
     title: 'OPTICAL RESEARCH ENGINEER',
     tagline: 'Optical systems that see <em>the eye more clearly.</em>',
-    eyebrow: 'ADAPTIVE OPTICS · OCULAR IMAGING · WAVEFRONT SENSING',
+    eyebrow: 'ADAPTIVE OPTICS · OPTICAL SYSTEM DESIGN · COMPUTATIONAL IMAGING · WAVEFRONT SENSING',
     description:
-      'I design and build imaging and correction systems for the eye — adaptive optics, ocular surface phase imaging, anterior segment OCT, and eye tracking — bridging optical engineering and vision science.',
-    email: 'rakesh.joshi@uconn.edu',
-    location: 'Storrs, CT',
-    linkedin: 'linkedin.com/in/rakesh-joshi',
+      'Optical Design Engineer with 6+ years of experience in optical system design and computational imaging. Expertise in using ZEMAX, MATLAB, and Python to develop advanced biophotonic optical systems.',
+    email: 'rjoshi4@cougarnet.uh.edu',
+    location: 'Houston, TX',
+    linkedin: '-',
     github: 'github.com/rakaUconn',
     orcid: 'orcid.org/0000-0000-0000-0000',
     googleScholar: 'scholar.google.com/citations?user=example',
     stats: [
       { value: 'PhD', label: 'ECE, UConn' },
       { value: '5', label: 'active projects' },
-      { value: 'Storrs', label: 'CT' },
+      { value: 'Houston', label: 'TX' },
     ],
   },
 
@@ -27,47 +27,78 @@ export const siteData: SiteData = {
       title: 'Adaptive Optics and Wavefront Sensing for Ophthalmic Imaging',
       category: 'ADAPTIVE OPTICS',
       status: 'current',
-      period: '2024 – Present',
-      authors: 'R. Joshi, et al.',
+      period: '2025 – Present',
+      authors: 'R. Joshi, et al. (PI: G. Yoon)',
+      institution: 'University of Houston College of Optometry — Visual Optics Laboratory',
       summary:
-        'Real-time correction of higher-order ocular aberrations using Shack–Hartmann wavefront sensing and a deformable mirror, enabling cellular-resolution imaging of the living retina.',
+        'A compact, transmission-based adaptive optics visual simulator (AOVS) that replaces the conventional deformable mirror with a transmissive deformable lens (DL), enabling wavefront sensing, correction, and aberration simulation out into the peripheral field — not just the fovea. It is the first system to combine an open-view scanning wavefront sensor with transmissive AO correction at each peripheral angle.',
       approach:
-        'A closed-loop adaptive optics system measures wavefront aberrations from a probe beam reflected off the retina and drives a deformable mirror at video rate, compensating for aberrations unique to each eye before they reach the imaging sensor.',
+        'A single conjugate pupil plane at the deformable lens ties together three channels: a 940 nm Hartmann–Shack sensing beacon, a visible OLED stimulus, and the shared relay backbone. The eye\'s 6 mm pupil is relayed through two 4f stages — L1 (125 mm) / L2 (200 mm) magnify 1.6× onto the DL\'s 10 mm clear aperture, and L3 (100 mm) / L4 (60 mm) demagnify 0.6× onto the wavefront sensor, for a net 0.96× pupil magnification. A motorized fixation target scans the eye through peripheral eccentricities while the DL runs one of three modes at each angle: Measurement (open loop, captures the eye\'s natural aberration profile), Correction (closed loop, drives the periphery toward diffraction-limited quality), and Simulation (open loop with a commanded Zernike profile, e.g. inducing peripheral myopic defocus). Off-axis pupil foreshortening (cos θ) is corrected before Zernike decomposition, and closed-loop control uses a standard integrator: v(k+1) = v(k) − g·C·s(k).',
       results:
-        'Early bench testing shows consistent Strehl-ratio improvement across a range of induced aberrations; integration with a scanning imaging channel is underway.',
+        'On a diffraction-limited model eye, closed-loop correction reduced RMS wavefront error from 0.385λ to 0.048λ in a single-pass visible-light test (632.8 nm, 6.4 mm pupil) — a ~37× reduction, comfortably inside the Maréchal diffraction-limited criterion (λ/14 ≈ 0.071λ). In a double-pass test at the system\'s native 940 nm sensing wavelength (5.7 mm pupil), closed-loop correction reduced error from 1.287λ to 0.090λ — a ~14× reduction, landing just outside the diffraction limit due to the doubled optical path. The deformable lens can inject a known aberration on demand and erase it just as cleanly, supporting its use as both a corrector and a simulator. Human peripheral validation against a commercial scanning aberrometer is in progress.',
       applications: [
-        { name: 'Retinal imaging', desc: 'Cellular-resolution visualization of photoreceptors and vasculature.' },
-        { name: 'Vision science', desc: 'Studying how optical aberrations affect visual perception.' },
-        { name: 'Myopia research', desc: 'Linking peripheral aberrations to refractive-error progression.' },
+        { name: 'Myopia research', desc: 'Peripheral aberration correction and induced-defocus studies linking eye growth to peripheral optics.' },
+        { name: 'Vision science', desc: 'Studying how peripheral — not just foveal — optical aberrations affect visual perception.' },
+        { name: 'Pre-operative simulation', desc: 'Simulating wide-field ophthalmic corrections before surgery.' },
       ],
-      tech: ['Wavefront Sensing', 'Adaptive Optics', 'Deformable Mirrors', 'MATLAB'],
-      pubNote: 'Manuscript in preparation.',
-      fig1Caption: 'Adaptive optics bench with Shack–Hartmann sensor and deformable mirror in the imaging path.',
-      fig2Caption: 'Closed-loop schematic: wavefront sensing drives real-time mirror correction.',
+      tech: [
+        'Adaptive Optics',
+        'Transmissive Deformable Lens',
+        'Hartmann–Shack Wavefront Sensing',
+        'Zernike Polynomials',
+        'Peripheral Scanning',
+        'Closed-Loop Control',
+      ],
+      pubNote:
+        'Visual Optics Laboratory, University of Houston College of Optometry (PI: Geunyoung Yoon), "Compact Transmission-Based Open-View Adaptive Optics Visual Simulator." Manuscript and system diagrams in preparation.',
+      fig1Caption:
+        'Optical layout of the compact transmission-based AOVS. Light from the eye passes through beam splitter BS and lens L1 into the first 4f relay (L1–L2), imaging the pupil onto the deformable lens (DL); a second relay (L3–L4) re-images the corrected pupil onto the Hartmann–Shack wavefront sensor, while L5 injects the visible stimulus from an OLED microdisplay through the same beam splitter.',
+      fig2Caption:
+        'Wavefront maps, single pass (632.8 nm, 6.4 mm pupil). The open-loop DL (center) intentionally introduces a large, well-characterized defocus term; closed-loop correction (right) flattens it to a near-uniform residual.',
+      fig3Caption:
+        'Wavefront maps, double pass (940 nm, 5.7 mm pupil). Native system aberration (left) is larger than in the single-pass visible test since it accumulates over the full round trip; closed-loop correction (right) brings it back down substantially.',
+      fig1Src: 'images/research/adaptive-optics-fig1.png',
+      fig2Src: 'images/research/adaptive-optics-fig2.jpg',
+      fig3Src: 'images/research/adaptive-optics-fig3.jpg',
       hasCaseStudy: true,
     },
     {
       id: 'ocular-surface-phase',
-      title: 'Phase Imaging of the Ocular Surface',
+      title: 'Phase Imaging and wavefront metrology',
       category: 'PHASE IMAGING',
       status: 'current',
-      period: '2023 – Present',
-      authors: 'R. Joshi, et al.',
+      period: '2025 – Present',
+      authors: 'R. Joshi, S. Nalam, G. Yoon',
+      institution: 'University of Houston College of Optometry',
       summary:
-        'Quantitative phase imaging of the tear film and ocular surface to characterize thickness dynamics and surface irregularities non-invasively.',
+        'Quantitative phase imaging of the tear film and ocular surface to characterize thickness dynamics and surface irregularities non-invasively. A related study used Quadriwave Lateral Shearing Interferometry (QWLSI) to quantitatively assess higher-order ocular aberrations, benchmarking its accuracy against conventional Shack-Hartmann (SH) wavefront sensing.',
       approach:
-        'A quantitative phase imaging setup captures interferometric phase data across the corneal surface, from which tear-film thickness and surface topography are reconstructed without contact or dye.',
+        'A quantitative phase imaging setup captures interferometric phase data across the corneal surface, from which tear-film thickness and surface topography are reconstructed without contact or dye. In a companion aberrometry study, a spatial light modulator (SLM) encoded controlled, high-spatial-frequency aberrations defined by Zernike polynomials — including a simulated trifocal intraocular lens (IOL) phase pattern — imaged in parallel by a QWLSI sensor (2.74 µm pixel pitch, 400×400 px) and a Shack-Hartmann sensor (6 µm pixel pitch, 400×400 px) for direct comparison.',
       results:
-        'Initial measurements show sensitivity to sub-micron tear-film thickness changes across a blink cycle.',
+        "In the QWLSI vs. SH comparison, QWLSI reconstructed the encoded aberrations — including the fine modulation of the diffractive trifocal IOL phase profile — with substantially lower root-mean-square error (RMSE) than the Shack-Hartmann sensor, particularly at high spatial frequencies. QWLSI's higher resolution, greater number of measurement points, and distinct analysis method enable it to measure higher-spatial-frequency aberrations more accurately than Shack-Hartmann sensing, supporting phase imaging as a promising tool for quantitative ocular aberrometry.",
       applications: [
         { name: 'Dry eye diagnostics', desc: 'Objective, non-invasive tear-film assessment.' },
         { name: 'Contact lens fitting', desc: 'Surface topography for lens design.' },
         { name: 'Clinical research', desc: 'Quantifying surface dynamics over time.' },
+        { name: 'Ocular aberrometry', desc: 'High-spatial-frequency aberration measurement for vision correction and adaptive optics.' },
       ],
-      tech: ['Quantitative Phase Imaging', 'Interferometry', 'Image Processing'],
-      pubNote: 'Manuscript in preparation.',
-      fig1Caption: 'Quantitative phase imaging setup for the ocular surface.',
-      fig2Caption: 'Reconstruction pipeline from interferometric phase to tear-film thickness map.',
+      tech: [
+        'Quantitative Phase Imaging',
+        'Quadriwave Lateral Shearing Interferometry (QWLSI)',
+        'Shack-Hartmann Sensing',
+        'Spatial Light Modulator',
+        'Zernike Polynomials',
+        'Interferometry',
+        'Image Processing',
+      ],
+      pubNote:
+        'R. Joshi, S. Nalam, G. Yoon, "Quantitative Assessment of Ocular Aberrations Using Phase Imaging," University of Houston College of Optometry. Acknowledgments: the authors thank Dynamic Optics for providing the Shack-Hartmann wavefront sensor.',
+      fig1Caption:
+        'Phase-retrieval pipeline: captured interferogram → Fourier transform → sideband filtering → phase-gradient extraction (Arg Hx, Arg Hy) → integration to an optical path difference (OPD) map.',
+      fig2Caption:
+        'Reconstruction of a diffractive trifocal IOL phase pattern — input ground truth vs. Shack-Hartmann vs. QWLSI. QWLSI preserves the concentric ring structure that Shack-Hartmann smooths away, at the cost of more speckle noise.',
+      fig1Src: 'images/research/ocular-surface-phase-fig1.jpg',
+      fig2Src: 'images/research/ocular-surface-phase-fig2.jpg',
       hasCaseStudy: true,
     },
     {
@@ -75,23 +106,35 @@ export const siteData: SiteData = {
       title: 'Anterior Segment Optical Coherence Tomography',
       category: 'OCT',
       status: 'current',
-      period: '2023 – Present',
-      authors: 'R. Joshi, et al.',
+      period: '2025 – Present',
+      authors: 'R. Joshi, M. Singh, S. Nalam, G. Yoon',
+      institution: 'University of Houston College of Optometry — Visual Optics Laboratory',
       summary:
-        'High-resolution OCT imaging of the cornea and anterior chamber to support diagnostics and refractive/surgical planning.',
+        'A free-space, Fourier-domain visible-light OCT (VIS-OCT) platform paired with a 3D U-Net segmentation and viability-classification pipeline, built to resolve the corneal endothelium — a single, ~5 µm-thick, non-regenerating cell layer — directly in 3D and grade donor corneal tissue without touching it.',
       approach:
-        'A custom anterior-segment OCT system acquires cross-sectional images of the cornea, iris, and anterior chamber at high axial resolution, paired with segmentation algorithms for automated biometry.',
+        "Axial resolution in OCT scales as 0.44·λ₀²/Δλ, so shifting the center wavelength into the visible band buys resolution without requiring an unreasonably wide bandwidth. A first-generation VIS-OCM prototype (650 nm center, 150 nm bandwidth) validated 1.87 µm axial and 4.4 µm lateral resolution on a USAF 1951 target and a 3.37 µm photoresist step. The second-generation platform rebuilt around a 585 nm-center supercontinuum source (95 nm bandwidth, ~1 mW at the sample) with a full free-space Michelson interferometer, MEMS scanning mirror, and 2048-pixel line-scan spectrometer at 125 kHz, acquiring 8×8 mm volumes (512×1600 A-scans) in ~13 s at ~1 µm axial resolution and −75 dB sensitivity. A three-stage pipeline then reads cell health from the volume: automated posterior-surface detection (graph-cuts) extracts a 50 µm slab around the Descemet membrane and endothelium; a five-level 3D U-Net with skip connections segments individual cells via watershed on the distance transform; and a gradient-boosted tree (XGBoost) classifies viability from ten features — three of which (axial backscattering intensity, cell-layer thickness, endothelial-to-Descemet reflectance ratio) are only visible because OCT is depth-resolved.",
       results:
-        'Automated segmentation achieves reliable corneal and anterior-chamber boundary detection across pilot scans.',
+        'Trained on 156 3D volumes from 12 porcine and 8 human donor corneas (hand-annotated by three experts, inter-annotator κ = 0.83 ± 0.04, labeled against specular microscopy using EBAA criteria), the pipeline reached a 0.87 ± 0.04 segmentation Dice score, 91.3% viability-classification accuracy, and 0.96 AUC, with GPU inference in 2.3 s per volume. Removing the three OCT-specific features dropped AUC to 0.90, confirming the depth-resolved signal carries independent diagnostic information beyond shape alone. Cell counting from segmentation came within 4.2% of manual annotation and 3.8% of the specular microscopy gold standard (mean IoU 0.79, 2 µm boundary F-score 0.84). In B-scans, the endothelium appears as a distinct hypoechogenic band separated from the bright Descemet membrane reflection — a separation conventional NIR OCT (~18 µm axial resolution) cannot resolve.',
       applications: [
-        { name: 'Corneal diagnostics', desc: 'Thickness and curvature mapping.' },
-        { name: 'Surgical planning', desc: 'Anterior chamber biometry for refractive/cataract surgery.' },
-        { name: 'Disease monitoring', desc: 'Longitudinal tracking of corneal pathology.' },
+        { name: 'Donor cornea evaluation', desc: 'Non-contact, quantitative viability grading for eye banks ahead of DMEK/DSAEK release.' },
+        { name: 'Corneal diagnostics', desc: 'Depth-resolved thickness, curvature, and endothelial health mapping.' },
+        { name: 'Surgical planning', desc: 'Anterior chamber biometry and endothelium assessment for refractive/cataract surgery.' },
       ],
-      tech: ['OCT', 'Image Segmentation', 'Optical Design'],
-      pubNote: 'Manuscript in preparation.',
-      fig1Caption: 'Anterior segment OCT bench with the sample and reference arms.',
-      fig2Caption: 'Segmentation pipeline for automated corneal biometry.',
+      tech: ['Visible-Light OCT', 'Fourier-Domain OCT', '3D U-Net', 'Image Segmentation', 'Deep Learning', 'XGBoost'],
+      pubNote:
+        'Visual Optics Laboratory, University of Houston College of Optometry (Corresponding: Geunyoung Yoon), "Visible-Light OCT for 3D Corneal Endothelial Imaging with Deep Learning-Based Viability Assessment." Manuscript in preparation. Funding: Lions Foundation for Sight; NIH/NEI (R01EY014999, R01EY034151, P30EY007551); Meta, RxSight, CooperVision, Johnson & Johnson.',
+      fig1Caption:
+        "Experimental setup of the spectral-domain visible-light OCT system. Light from the broadband source splits at the fiber coupler between sample and reference arms; the sample arm routes through a collimator, polarization controller, scan lens, and galvano scanner to a focusing objective, with the return signal coupled through the spectrometer's diffraction grating onto the line-scan sensor.",
+      fig2Caption:
+        'Resolution characterization. Left: axial point-spread function from a mirror reflection, Gaussian-fit to FWHM = 2.16 px (2.59 µm in air; 1.87 µm in tissue, n=1.38), matching the 0.44λ₀²/(nΔλ) prediction. Right: lateral resolution from a USAF 1951 target en face image via peak-and-trough intensity detection, measuring 4.4 µm.',
+      fig3Caption:
+        "Thickness and target validation. Top: a 3.37 µm photoresist step spin-coated on a silica chip, shown as a 3D volume render and B-scan — the OCT-measured step height matches the known coating thickness. Bottom: a USAF 1951 resolution target's chrome bar pattern, reconstructed as a 3D isosurface directly from OCT volume data.",
+      fig4Caption:
+        'B-scan of the cornea. The bright arc marks the anterior corneal surface; the moderately scattering tissue beneath is the stroma, with a fainter second interface visible deeper in the scan. Speckle is characteristic of coherent OCT imaging, not a system artifact.',
+      fig1Src: 'images/research/as-oct-fig1.jpg',
+      fig2Src: 'images/research/as-oct-fig2.jpg',
+      fig3Src: 'images/research/as-oct-fig3.jpg',
+      fig4Src: 'images/research/as-oct-fig4.jpg',
       hasCaseStudy: true,
     },
     {
@@ -123,7 +166,7 @@ export const siteData: SiteData = {
       title: 'Femtosecond Laser-Based Refractive Index Modification and Wavefront Metrology',
       category: 'FEMTOSECOND LASER OPTICS',
       status: 'current',
-      period: '2024 – Present',
+      period: '2025 – Present',
       authors: 'R. Joshi, et al.',
       summary:
         'Using femtosecond laser writing to locally modify refractive index within optical materials, with wavefront metrology to characterize and validate the resulting gradient-index structures.',

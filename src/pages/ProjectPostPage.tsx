@@ -15,6 +15,27 @@ const ImagePlaceholder: React.FC<{ style?: React.CSSProperties }> = ({ style }) 
   />
 );
 
+const Figure: React.FC<{ src?: string; alt: string; style?: React.CSSProperties }> = ({
+  src,
+  alt,
+  style,
+}) =>
+  src ? (
+    <img
+      src={`${import.meta.env.BASE_URL}${src}`}
+      alt={alt}
+      style={{
+        width: '100%',
+        objectFit: 'contain',
+        borderRadius: 6,
+        background: '#fff',
+        ...style,
+      }}
+    />
+  ) : (
+    <ImagePlaceholder style={style} />
+  );
+
 const ProjectPostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -104,7 +125,7 @@ const ProjectPostPage: React.FC = () => {
             margin: 0,
           }}
         >
-          {project.authors} — University of Connecticut
+          {project.authors} — {project.institution ?? 'University of Connecticut'}
         </p>
       </div>
 
@@ -116,7 +137,7 @@ const ProjectPostPage: React.FC = () => {
           padding: '0 44px',
         }}
       >
-        <ImagePlaceholder style={{ aspectRatio: '21/9' }} />
+        <Figure src={project.fig1Src} alt={project.fig1Caption} style={{ aspectRatio: '21/9' }} />
       </div>
 
       {/* Body */}
@@ -175,7 +196,7 @@ const ProjectPostPage: React.FC = () => {
 
             {/* Fig 2 */}
             <div style={{ margin: '28px 0 34px' }}>
-              <ImagePlaceholder style={{ aspectRatio: '16/9' }} />
+              <Figure src={project.fig2Src} alt={project.fig2Caption} style={{ aspectRatio: '16/9' }} />
               {project.fig2Caption && (
                 <p
                   style={{
@@ -214,6 +235,48 @@ const ProjectPostPage: React.FC = () => {
             >
               {project.results}
             </p>
+
+            {/* Fig 3 */}
+            {(project.fig3Src || project.fig3Caption) && (
+              <div style={{ margin: '28px 0 34px' }}>
+                <Figure src={project.fig3Src} alt={project.fig3Caption ?? ''} style={{ aspectRatio: '16/9' }} />
+                {project.fig3Caption && (
+                  <p
+                    style={{
+                      font: "italic 400 13px/1.5 'Spectral', serif",
+                      color: '#8a7f6c',
+                      borderBottom: '1px solid #e8e0cf',
+                      padding: '10px 0 16px',
+                      margin: '8px 0 0',
+                    }}
+                  >
+                    <b style={{ fontStyle: 'normal', color: '#8a2b1e' }}>Fig. 3</b> —{' '}
+                    {project.fig3Caption}
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* Fig 4 */}
+            {(project.fig4Src || project.fig4Caption) && (
+              <div style={{ margin: '28px 0 34px' }}>
+                <Figure src={project.fig4Src} alt={project.fig4Caption ?? ''} style={{ aspectRatio: '16/9' }} />
+                {project.fig4Caption && (
+                  <p
+                    style={{
+                      font: "italic 400 13px/1.5 'Spectral', serif",
+                      color: '#8a7f6c',
+                      borderBottom: '1px solid #e8e0cf',
+                      padding: '10px 0 16px',
+                      margin: '8px 0 0',
+                    }}
+                  >
+                    <b style={{ fontStyle: 'normal', color: '#8a2b1e' }}>Fig. 4</b> —{' '}
+                    {project.fig4Caption}
+                  </p>
+                )}
+              </div>
+            )}
           </>
         )}
 

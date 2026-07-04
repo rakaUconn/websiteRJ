@@ -7,6 +7,7 @@ export interface Project {
   status: 'current' | 'past' | 'future';
   period: string;
   authors: string;
+  institution?: string;
   summary: string;
   approach?: string;
   results?: string;
@@ -15,6 +16,12 @@ export interface Project {
   pubNote: string;
   fig1Caption: string;
   fig2Caption: string;
+  fig3Caption?: string;
+  fig4Caption?: string;
+  fig1Src?: string;
+  fig2Src?: string;
+  fig3Src?: string;
+  fig4Src?: string;
   hasCaseStudy: boolean;
 }
 
