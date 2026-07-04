@@ -51,6 +51,14 @@ export interface Publication {
   tags: string[];
 }
 
+export interface Patent {
+  title: string;
+  status: 'Applied' | 'Granted';
+  applicationNo: string;
+  date: string;
+  inventors: string;
+}
+
 export interface BlogPost {
   date: string;
   title: string;
@@ -78,5 +86,6 @@ export interface SiteData {
   education: Education[];
   experience: Experience[];
   publications: Publication[];
+  patents: Patent[];
   blogPosts: BlogPost[];
 }

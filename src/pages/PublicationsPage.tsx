@@ -1,7 +1,7 @@
 import React from 'react';
 import { siteData } from '../data/content';
 
-const { publications } = siteData;
+const { publications, patents } = siteData;
 
 const PublicationsPage: React.FC = () => {
   return (
@@ -94,6 +94,62 @@ const PublicationsPage: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Patents */}
+      {patents.length > 0 && (
+        <>
+          <h2
+            style={{
+              font: "500 26px/1.2 'Spectral', serif",
+              margin: '52px 0 22px',
+              color: '#1c1a17',
+            }}
+          >
+            Patents
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+            {patents.map((patent, i) => (
+              <div
+                key={i}
+                style={{
+                  borderLeft: '3px solid #8a2b1e',
+                  padding: '6px 0 6px 20px',
+                }}
+              >
+                <h3
+                  style={{
+                    font: "500 19px/1.35 'Spectral', serif",
+                    margin: '0 0 8px',
+                    color: '#1c1a17',
+                  }}
+                >
+                  {patent.title}
+                </h3>
+                <div
+                  style={{
+                    font: "400 14px/1.4 'IBM Plex Mono', monospace",
+                    color: '#6b6459',
+                    marginBottom: 10,
+                  }}
+                >
+                  {patent.inventors} · {patent.applicationNo} ({patent.date})
+                </div>
+                <span
+                  style={{
+                    font: "500 11px/1 'IBM Plex Mono', monospace",
+                    background: '#f2e4e1',
+                    color: '#8a2b1e',
+                    padding: '6px 11px',
+                    borderRadius: 4,
+                  }}
+                >
+                  {patent.status.toUpperCase()}
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
