@@ -215,23 +215,34 @@ export const siteData: SiteData = {
       category: '3D IMAGING',
       status: 'past',
       period: '2020 – 2023',
-      authors: 'R. Joshi, M. Cho, B. Javidi',
+      authors: 'R. Joshi, K. Usmani, G. Krishnan, F. Blackmon, B. Javidi',
+      institution: 'University of Connecticut — Electrical and Computer Engineering Department',
       summary:
-        'Advanced integral imaging techniques for capturing and visualizing dynamic underwater phenomena at high speeds, overcoming scattering and absorption limits of underwater environments.',
+        'An integrated dual-function deep learning and 3D integral imaging (InIm) system for underwater object detection and temporal optical signal detection in turbid, partially occluded water. A camera array captures the scene; 3D-reconstructed video is fed to a YOLOv4 detector for object classification and depth estimation, while a CNN-BiLSTM network decodes a temporally encoded optical communication signal transmitted through the same turbid medium.',
       approach:
-        'Custom-designed microlens arrays, optimized for underwater light propagation, were paired with a high-speed synchronized acquisition system (>500 fps) and novel computational reconstruction algorithms for real-time 3D visualization.',
+        "Integral imaging captures elemental images with a 3×3 array of GigE cameras (80 mm pitch, F/1.8, 20 fps) and computationally reconstructs volumetric scenes via a pinhole-based back-propagation algorithm, isolating objects from turbidity and partial occlusion that a single 2D view cannot separate. Reconstructed 3D video is fed to a YOLOv4 network (CSPDarkNet-53 backbone, PANet + SPP neck) for object detection and range estimation, trained on clear-water scenes and tested on turbid, partially occluded scenes (Beer's coefficient α = 0.0027–0.0391 mm⁻¹). In parallel, a 630 nm LED transmits a 20 bit/s optical signal encoded with a 7-bit gold code; a pretrained GoogLeNet extracts per-frame features that feed a bidirectional LSTM (CNN-BiLSTM) trained via a sliding 7-frame window to classify each bit as '1', '0', or 'idle'.",
       results:
-        'Demonstrated real-time 3D visualization underwater with significant image-quality improvement through scattering media, and robust algorithms for reconstructing dynamic scenes.',
+        "3D integral imaging substantially outperformed conventional 2D imaging at every turbidity level tested. For object detection, 3D reconstruction raised shark/submarine precision from 0.847/0.739 to 0.970/0.932 at the lowest turbidity (α = 0.0027 mm⁻¹) and from 0.061/0.053 to 0.168/0.106 at the highest (α = 0.0391 mm⁻¹). For optical signal detection, the 3D approach achieved a Matthew's correlation coefficient (MCC) of 1.0 across nearly all turbidity levels (vs. ≤0.10 for 2D) and an ROC AUC of 0.930 at α = 0.0391 mm⁻¹, compared to 0.422 for 2D imaging — with consistently fewer bit-detection errors across all turbidities tested.",
       applications: [
-        { name: 'Marine biology', desc: 'Study of marine life behavior in natural habitat.' },
-        { name: 'Underwater robotics', desc: 'Navigation and object detection for AUVs.' },
-        { name: 'Environmental monitoring', desc: 'Real-time ecosystem monitoring.' },
+        { name: 'Maritime security', desc: 'Detecting and identifying underwater objects such as submarines or unauthorized divers.' },
+        { name: 'Underwater communication', desc: 'Simultaneous object detection and optical data transmission between surveillance devices.' },
+        { name: 'Underwater robotics', desc: 'Navigation, data collection, and object identification in turbid environments.' },
       ],
-      tech: ['Integral Imaging', 'Machine Learning', 'Optical Design', 'MATLAB'],
+      tech: ['3D Integral Imaging', 'YOLOv4', 'CNN-BiLSTM', 'Deep Learning', 'Optical Signal Detection', 'MATLAB'],
       pubNote:
-        'R. Joshi, M. Cho, B. Javidi — "Deep learning enhanced integral imaging for underwater object detection," Optics Express 31, 15234–15247 (2023).',
-      fig1Caption: 'Experimental setup for high-speed underwater 3D integral imaging.',
-      fig2Caption: 'Reconstructed 3D images of dynamic underwater scenes.',
+        'R. Joshi, K. Usmani, G. Krishnan, F. Blackmon, B. Javidi, "Underwater object detection and temporal signal detection in turbid water using 3D-integral imaging and deep learning," Optics Express 32(2), 1789–1801 (2024). https://doi.org/10.1364/OE.510681',
+      fig1Caption:
+        'Experimental setup for an integrated dual-function underwater object detection and temporal optical signal detection using integral imaging: a camera array records a scene with turbidity, partial occlusion, and a temporally encoded LED source.',
+      fig2Caption:
+        '3D integral imaging process: (a) pickup stage — a camera array captures elemental images of the 3D object, and (b) computational reconstruction stage — rays are back-propagated through a virtual pinhole array to a reconstructed depth plane.',
+      fig3Caption:
+        'Sample test data for object classification under partial occlusion and turbidity. (a) 2D elemental image at α = 0.0027 mm⁻¹; (a-i, a-ii) classified 3D reconstructions at Z = 1.9 m and 2.15 m. (b) 2D elemental image at α = 0.0325 mm⁻¹; (b-i, b-ii) the 3D detector still correctly classifies shark and submarine despite heavier turbidity.',
+      fig4Caption:
+        'Underwater optical signal detection performance vs. turbidity (Beer\'s coefficient α). (a) Area under the ROC curve — 3D integral imaging (blue) stays near 1.0 across all turbidities tested, while 2D imaging (black) drops toward 0.4. (b) Number of detection errors — 3D integral imaging remains near zero while 2D imaging accumulates 13–16 errors throughout.',
+      fig1Src: 'images/research/underwater-imaging-fig1.jpg',
+      fig2Src: 'images/research/underwater-imaging-fig2.jpg',
+      fig3Src: 'images/research/underwater-imaging-fig3.jpg',
+      fig4Src: 'images/research/underwater-imaging-fig4.jpg',
       hasCaseStudy: true,
     },
     {
