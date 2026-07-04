@@ -287,46 +287,27 @@ export const siteData: SiteData = {
       category: 'COMPUTATIONAL',
       status: 'past',
       period: '2019 – 2023',
-      authors: 'R. Joshi, et al.',
+      authors: 'R. Joshi, B. Javidi',
+      institution: 'University of Connecticut — Electrical and Computer Engineering Department',
       summary:
-        'Implementation of computational imaging techniques, including deep-learning reconstruction, for enhanced image recovery and analysis.',
+        'An integral imaging-based active polarization descattering technique for underwater object visualization in turbid, occluded water. 3D reconstruction via integral imaging reduces noise and improves estimation of the intermediate parameters (degree of polarization of signal and background) required for polarization-based image recovery, substantially outperforming conventional 2D polarization dehazing.',
       approach:
-        'Neural reconstruction pipelines were trained to recover scene detail lost to noise, blur, and scattering, integrated with conventional optical acquisition hardware.',
+        "Underwater image degradation is modeled as I = D(x,y) + B(x,y), where target light D and background light B each split into co- and cross-polarized components. A camera array captures polarized elemental images through a polarization state analyzer (PSA), with a polarization state generator (PSG) providing polarized illumination; 3D reconstruction via integral imaging combines these perspectives before dehazing. The target is recovered as D̂rec = 1/(P̂scatt − P̂obj) · [I⊥rec(1+P̂scatt) − I∥rec(1−P̂scatt)], where the scattering and object polarization parameters P̂scatt and P̂obj are estimated from background and signal regions of the 3D-reconstructed image — estimates that are far less noisy than their 2D counterparts, since integral imaging's multi-perspective reconstruction averages down noise before the polarization parameters are computed.",
       results:
-        'Achieved measurable gains in reconstruction fidelity over classical deconvolution baselines across several imaging modalities.',
+        "Across six turbidity levels (Beer's coefficient α = 0.0041–0.0213 mm⁻¹), 3D integral imaging-based polarization dehazing consistently and substantially outperformed conventional 2D polarization dehazing on structural similarity index (SSIM) against a clear-water reference: e.g., 0.6818 vs. 0.2856 at α = 0.0041 mm⁻¹, and 0.4297 vs. 0.1587 at α = 0.0116 mm⁻¹, with the improvement holding at every turbidity level tested.",
       applications: [
-        { name: 'Medical diagnostics', desc: 'Enhanced clinical image recovery.' },
-        { name: 'Scientific research', desc: 'Recovering detail in low-SNR data.' },
-        { name: 'Industrial inspection', desc: 'Defect detection under noisy imaging.' },
+        { name: 'Underwater imaging', desc: 'Recovering occluded targets from scattering, turbid water without additional hardware.' },
+        { name: 'Defense & surveillance', desc: 'Target visualization through degraded, low-visibility media.' },
+        { name: 'Remote sensing', desc: 'Polarization-based recovery in scattering or hazy environments.' },
       ],
-      tech: ['Machine Learning', 'Image Processing', 'Python', 'TensorFlow'],
-      pubNote: 'Findings incorporated into the underwater and polarimetric imaging publications above.',
-      fig1Caption: 'Computational imaging reconstruction pipeline.',
-      fig2Caption: 'Comparison of raw and reconstructed image quality.',
-      hasCaseStudy: true,
-    },
-    {
-      id: 'optical-microscopy',
-      title: 'Advanced Optical Microscopy',
-      category: 'MICROSCOPY',
-      status: 'past',
-      period: '2018 – 2022',
-      authors: 'R. Joshi, et al.',
-      summary:
-        'Design and optimization of optical microscopy systems for high-resolution imaging and characterization, including a wide-field fiber-optic micro-endoscope.',
-      approach:
-        'A high-resolution wide-field fiber-optic micro-endoscopic system was developed and optimized, balancing field of view, resolution, and fiber-bundle constraints.',
-      results:
-        'Delivered a working wide-field micro-endoscopic prototype with improved resolution over comparable fiber-bundle systems.',
-      applications: [
-        { name: 'Biological research', desc: 'High-resolution tissue imaging.' },
-        { name: 'Material science', desc: 'Microstructure characterization.' },
-        { name: 'Quality control', desc: 'Micro-scale inspection.' },
-      ],
-      tech: ['Optical Design', 'Microscopy', 'Image Analysis'],
-      pubNote: 'Developed as part of graduate dissertation work at IIT Delhi.',
-      fig1Caption: 'High-resolution wide-field optical microscopy setup.',
-      fig2Caption: 'Fiber-optic micro-endoscope design schematic.',
+      tech: ['Integral Imaging', 'Polarization Descattering', 'Image Reconstruction', 'MATLAB'],
+      pubNote:
+        'R. Joshi, B. Javidi, "Three-dimensional Integral Imaging Visualization in Scattering Medium with Active Polarization Descattering," Optica Imaging Congress (3D, COSI, DH, FLatOptics, IS, pcAOP), JTu4A.39 (2023).',
+      fig1Caption:
+        'Experimental setup and results. (a) Polarized illumination (PSG) and a camera array with a polarization state analyzer (PSA) capture the underwater scene through turbid water. (b) Conventional 2D polarization dehazing (SSIM = 0.1587). (c) 3D integral imaging-based polarization dehazing at the same turbidity (α = 0.0116 mm⁻¹), recovering substantially more structure (SSIM = 0.4297).',
+      fig2Caption:
+        'Polarization-based recovery model: co- and cross-polarized 3D reconstructions are combined via the estimated scattering and object polarization parameters to recover the target free of backscatter.',
+      fig1Src: 'images/research/computational-imaging-fig1.jpg',
       hasCaseStudy: true,
     },
     {
