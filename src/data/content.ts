@@ -12,8 +12,8 @@ export const siteData: SiteData = {
     location: 'Houston, TX',
     linkedin: '-',
     github: 'github.com/rakaUconn',
-    orcid: 'orcid.org/0000-0000-0000-0000',
-    googleScholar: 'scholar.google.com/citations?user=example',
+    orcid: 'https://orcid.org/0000-0001-8012-9055',
+    googleScholar: 'https://scholar.google.com/citations?user=Vw4gdakAAAAJ&hl=en',
     stats: [
       { value: 'PhD', label: 'ECE, UConn' },
       { value: '5', label: 'active projects' },
@@ -372,8 +372,8 @@ export const siteData: SiteData = {
   experience: [
     {
       title: 'Postdoctoral Research Associate',
-      org: 'University of Connecticut',
-      location: 'Storrs, CT',
+      org: 'University of Houston College of Optometry',
+      location: 'Houston, TX',
       dates: '2024 – Present',
       points: [
         'Develop novel optical imaging and correction systems for ocular research',
@@ -386,7 +386,7 @@ export const siteData: SiteData = {
       title: 'Graduate Research Assistant',
       org: 'University of Connecticut',
       location: 'Storrs, CT',
-      dates: '2018 – 2024',
+      dates: '2019 – 2024',
       points: [
         'Designed and built optical systems for underwater and polarimetric imaging',
         'Developed algorithms for 3D image reconstruction',
@@ -525,26 +525,11 @@ export const siteData: SiteData = {
   blogPosts: [
     {
       date: 'March 2024',
-      title: 'Starting a new line of work: adaptive optics for ophthalmic imaging',
+      title: '-----',
       blurb:
-        'Kicking off a project on real-time wavefront correction for retinal imaging — first update on the bench build coming soon.',
+        'coming soon.',
     },
-    {
-      date: 'January 2024',
-      title: 'Joined UConn as a Postdoctoral Research Associate',
-      blurb:
-        'Continuing research in optical imaging and computational optics, now focused on ocular applications.',
-    },
-    {
-      date: 'November 2023',
-      title: 'Paper published in Optics Express',
-      blurb:
-        '"Deep learning enhanced integral imaging for underwater object detection" is now out — see the Publications page.',
-    },
-    {
-      date: 'August 2022',
-      title: 'Presented polarimetric imaging work at an Optica conference',
-      blurb: 'Shared early results on dynamic polarimetric imaging for detection through scattering media.',
-    },
+    
+    
   ],
 };

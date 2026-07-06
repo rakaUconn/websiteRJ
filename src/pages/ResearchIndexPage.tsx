@@ -159,8 +159,7 @@ const ResearchIndexPage: React.FC = () => {
           maxWidth: '62ch',
         }}
       >
-        Active work on ocular imaging and optical correction, plus what's coming next — each written
-        up as a short technical case study.
+        Active work on ocular imaging and optical correction.
       </p>
 
       {/* Current Projects */}

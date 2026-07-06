@@ -60,7 +60,7 @@ const AboutPage: React.FC = () => {
           maxWidth: '64ch',
         }}
       >
-        PhD-trained optical research engineer working across ocular imaging, adaptive optics, and
+        Optical research engineer working across ocular imaging, adaptive optics, and
         computational photonics.
       </p>
 
