@@ -10,6 +10,10 @@ interface ContactRow {
   href?: string;
 }
 
+// Some fields (e.g. ORCID, Google Scholar) are stored as full URLs already;
+// others (e.g. GitHub) are stored as bare domains. Avoid double-prefixing.
+const toHref = (value: string) => (/^https?:\/\//.test(value) ? value : `https://${value}`);
+
 const rows: ContactRow[] = [
   { label: 'EMAIL', value: personalInfo.email, isLink: true, href: `mailto:${personalInfo.email}` },
   { label: 'LOCATION', value: 'Storrs, Connecticut, USA' },
@@ -17,25 +21,25 @@ const rows: ContactRow[] = [
     label: 'LINKEDIN',
     value: personalInfo.linkedin,
     isLink: true,
-    href: `https://${personalInfo.linkedin}`,
+    href: toHref(personalInfo.linkedin),
   },
   {
     label: 'GITHUB',
     value: personalInfo.github,
     isLink: true,
-    href: `https://${personalInfo.github}`,
+    href: toHref(personalInfo.github),
   },
   {
     label: 'ORCID',
     value: personalInfo.orcid,
     isLink: true,
-    href: `https://${personalInfo.orcid}`,
+    href: toHref(personalInfo.orcid),
   },
   {
     label: 'GOOGLE SCHOLAR',
     value: personalInfo.googleScholar,
     isLink: true,
-    href: `https://${personalInfo.googleScholar}`,
+    href: toHref(personalInfo.googleScholar),
   },
 ];
 
