@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rakesh Joshi - Portfolio</title>
+  <script>
+    // Store the current path and redirect to index.html
+    sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
+    location.replace(location.origin + location.pathname.split('/').slice(0, -1).join('/') + '/');
+  </script>
+</head>
+<body>
+  <!-- This page is used for GitHub Pages SPA routing -->
+</body>
+</html>
